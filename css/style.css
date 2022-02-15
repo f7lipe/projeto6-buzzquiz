@@ -1,0 +1,102 @@
+/* --- Generalizações --- */
+*{
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root{
+    --buzzColor: #EC362D;
+    --buzzgray: #B9B9B9;
+
+
+}
+
+/*Esconder*/
+.hidden{
+    display: none;
+}
+
+/*Cores de fundo*/
+.bg-buzz{
+    background: var(--buzzColor);
+}
+
+/*Bordas*/
+.dashed{
+    border: 1px dashed var(--buzzgray);
+}
+.dashed-red{
+    border: 1px dashed var(--buzzColor);
+}
+
+/*Botões*/
+.btn-phill{
+    width: 151px;
+    height: 40px;
+    border-radius: 50px;
+    background: none;
+    color: var(--buzzColor);
+}
+.btn-circle{
+    width: 31px;
+    height: 30px; 
+    border-radius: 50px;
+    background: var(--buzzColor);
+    font-size: 20px;
+    color: white;
+    border-color: transparent;
+
+}
+
+/*Efeitos*/
+.box-shadow{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.shadow-overlay{
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
+}
+
+/*Flex-box*/
+.d-flex{
+    display: flex;
+}
+.flex-column{
+    flex-direction: column;
+}
+.justify-content-center{
+    justify-content: center;
+}
+.space-around{
+    justify-content: space-around;
+}
+.space-between{
+    justify-content: space-between;
+}
+.space-evenly{
+    justify-content: space-evenly;
+}
+.align-items-center{
+    align-items: center;
+}
+
+/*Texto e fonte*/
+.buzz-title{
+    font-size: 37px;
+    color: #FFFFFF;
+
+}
+.text-title{
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+}
+.text-body{
+    font-weight: 400;
+    font-size: 19px;
+    color: #FFFFFF;
+}
+.text-gray{
+    color: var(--buzzgray);
+}
+
+

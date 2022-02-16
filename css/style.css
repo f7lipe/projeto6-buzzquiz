@@ -11,7 +11,7 @@
 
 /*Esconder*/
 .hidden {
-    display: none;
+    visibility: hidden;
 }
 
 /*Cores de fundo*/

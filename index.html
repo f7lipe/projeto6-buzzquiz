@@ -1,78 +1,224 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BuzzQuiz</title>
     <!--fontes-->
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <!--estilos-->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/template.css">
-    <link rel="stylesheet" href="css/creater-quizz.css">
-    
-</head>
-<body>
-    <header class="d-flex justify-content-center align-items-center buzz-title bg-buzz box-shadow">BuzzQuiz</header>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/template.css" />
+    <link rel="stylesheet" href="css/creater-quizz.css" />
+  </head>
+  <body>
+    <header
+      class="d-flex justify-content-center align-items-center buzz-title bg-buzz box-shadow"
+    >
+      BuzzQuiz
+    </header>
     <main>
-        <!-- Tela 1-->
-        <section class="home align-items-center hidden">
-            <!--Adicionar quiz-->
-            <div class="new-quiz d-flex flex-column align-items-center justify-content-center space-around dashed">
-                <p class="text-body text-gray">Você não criou nenhum quiz ainda :(</p>
-                <button class="add-quizz btn-phill dashed-red">Criar Quizz</button>
-            </div>
-            <!-- Lista de quizzes-->
-            <section class="quizzes">
-                <!--Quizzes do usuário-->
-                <!--'Cabeçalho'-->
-                <div class="d-flex align-items-center space-between">
-                    <p class="text-title">Seus quizes</p>
-                    <button class="add-quizz btn-circle">+</button>
-                </div>
-                <!--Quizzes-->
-                <!--'Cabeçalho'-->
-                <article class="quiz-card"> 
-                    <img  src="https://gkpb.com.br/wp-content/uploads/2021/12/gkpb-cinemark-reexibe-harry-potter-696x392.jpg" alt=”Imagem”>
-                    <p class="text-body">Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                </article>
+      <!-- Tela 1-->
+      <section class="home align-items-center hidden">
+        <!--Adicionar quiz-->
+        <div
+          class="new-quiz d-flex flex-column align-items-center justify-content-center space-around dashed"
+        >
+          <p class="text-body text-gray">Você não criou nenhum quiz ainda :(</p>
+          <button class="add-quizz btn-phill dashed-red">Criar Quizz</button>
+        </div>
+        <!-- Lista de quizzes-->
+        <section class="quizzes">
+          <!--Quizzes do usuário-->
+          <!--'Cabeçalho'-->
+          <div class="d-flex align-items-center space-between">
+            <p class="text-title">Seus quizes</p>
+            <button class="add-quizz btn-circle">+</button>
+          </div>
+          <!--Quizzes-->
+          <!--'Cabeçalho'-->
+          <article class="quiz-card">
+            <img
+              src="https://gkpb.com.br/wp-content/uploads/2021/12/gkpb-cinemark-reexibe-harry-potter-696x392.jpg"
+              alt="”Imagem”"
+            />
+            <p class="text-body">
+              Acerte os personagens corretos dos Simpsons e prove seu amor!
+            </p>
+          </article>
 
-                <!--Todos os quizzs-->
-                <p class="text-title">Todos os quizes</p>
-                <article class="quiz-card"> 
-                    <img src="https://gkpb.com.br/wp-content/uploads/2021/12/gkpb-cinemark-reexibe-harry-potter-696x392.jpg" alt=”Imagem”>
-                    <p class="text-body shadow-overlay">Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                </article>
+          <!--Todos os quizzs-->
+          <p class="text-title">Todos os quizes</p>
+          <article class="quiz-card">
+            <img
+              src="https://gkpb.com.br/wp-content/uploads/2021/12/gkpb-cinemark-reexibe-harry-potter-696x392.jpg"
+              alt="”Imagem”"
+            />
+            <p class="text-body shadow-overlay">
+              Acerte os personagens corretos dos Simpsons e prove seu amor!
+            </p>
+          </article>
 
-                <article class="quiz-card"> 
-                    <img src="https://gkpb.com.br/wp-content/uploads/2021/12/gkpb-cinemark-reexibe-harry-potter-696x392.jpg" alt=”Imagem”>
-                    <p class="text-body shadow-overlay">Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                </article>
+          <article class="quiz-card">
+            <img
+              src="https://gkpb.com.br/wp-content/uploads/2021/12/gkpb-cinemark-reexibe-harry-potter-696x392.jpg"
+              alt="”Imagem”"
+            />
+            <p class="text-body shadow-overlay">
+              Acerte os personagens corretos dos Simpsons e prove seu amor!
+            </p>
+          </article>
 
-                <article class="quiz-card"> 
-                    <img src="https://gkpb.com.br/wp-content/uploads/2021/12/gkpb-cinemark-reexibe-harry-potter-696x392.jpg" alt=”Imagem”>
-                    <p class="text-body shadow-overlay">Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                </article>
-            </section>
+          <article class="quiz-card">
+            <img
+              src="https://gkpb.com.br/wp-content/uploads/2021/12/gkpb-cinemark-reexibe-harry-potter-696x392.jpg"
+              alt="”Imagem”"
+            />
+            <p class="text-body shadow-overlay">
+              Acerte os personagens corretos dos Simpsons e prove seu amor!
+            </p>
+          </article>
         </section>
-    </main>  
+      </section>
+    </main>
     <!-- Criacao do quizz -->
     <section class="creater-home">
-        <div class="creater-header">
-            <p>Comece pelo começo</p>
-        </div>
-        <div class = "creater-input-container">
-            <input id="creater-input-title" placeholder="Título do seu quizz" class ="creater-input" type="text" name="quizz[title]">
-            <input id="creater-input-image" placeholder="URL da imagem do seu quizz" class ="creater-input" type="text" name="quizz[image-url]">
-            <input id="creater-input-questions-numbers" placeholder="Quantidade de perguntas do quizz" class ="creater-input" type="number" name="quizz[questions]" min="3">
-            <input id="creater-input-level-numbers" placeholder="Quantidade de níveis do quizz" class ="creater-input" type="number" name="quizz[level-numbers]" min="2">
-        </div>
-        <button onclick="firstCreaterBtn()" class="btn-creater">Prosseguir pra criar perguntas</button>
+      <div class="creater-header">
+        <p>Comece pelo começo</p>
+      </div>
+      <div class="creater-input-container">
+        <input
+          id="creater-input-title"
+          placeholder="Título do seu quizz"
+          class="creater-input"
+          type="text"
+          minlength="20"
+          maxlength="65"
+          name="quizz[title]"
+        />
+        <input
+          id="creater-input-image"
+          placeholder="URL da imagem do seu quizz"
+          class="creater-input"
+          type="url"
+          name="quizz[image-url]"
+        />
+        <input
+          id="creater-input-questions-numbers"
+          placeholder="Quantidade de perguntas do quizz"
+          class="creater-input"
+          type="number"
+          name="quizz[questions]"
+          min="3"
+        />
+        <input
+          id="creater-input-level-numbers"
+          placeholder="Quantidade de níveis do quizz"
+          class="creater-input"
+          type="number"
+          name="quizz[level-numbers]"
+          min="2"
+        />
+      </div>
+      <button onclick="firstCreaterBtn()" class="btn-creater">
+        Prosseguir pra criar perguntas
+      </button>
+    </section>
+    <section class="creater-home creater-screen-two hidden">
+      <div class="creater-header">
+        <p>Crie suas perguntas</p>
+      </div>
+      <div class="creater-input-container">
+        <div class="creater-input-container-header"><p>Pergunta 1</p></div>
+        <input
+          id="creater-input-titleDois"
+          placeholder="Título do seu quizz"
+          class="creater-input"
+          type="text"
+          minlength="10"
+          maxlength="65"
+          name="quizz[title]"
+        />
+        <input
+          id="creater-input-imageDois"
+          placeholder="URL da imagem do seu quizz"
+          class="creater-input"
+          type="url"
+          name="quizz[image-url]"
+        />
+        <input
+          id="creater-input-questions-numbersDois"
+          placeholder="Quantidade de perguntas do quizz"
+          class="creater-input"
+          type="number"
+          name="quizz[questions]"
+          min="3"
+        />
+        <input
+          id="creater-input-level-numbersDOis"
+          placeholder="Quantidade de níveis do quizz"
+          class="creater-input"
+          type="number"
+          name="quizz[level-numbers]"
+          min="2"
+        />
+      </div>
+      <button onclick="firstCreaterBtn()" class="btn-creater">
+        Prosseguir pra criar perguntas
+      </button>
+    </section>
+    <section class="creater-home creater-screen-tree hidden">
+      <div class="creater-header">
+        <p>Comece pelo começo</p>
+      </div>
+      <div class="creater-input-container">
+        <input
+          id="creater-input-titleTres"
+          placeholder="Título do seu quizz"
+          class="creater-input"
+          type="text"
+          name="quizz[title]"
+        />
+        <input
+          id="creater-input-imageTres"
+          placeholder="URL da imagem do seu quizz"
+          class="creater-input"
+          type="text"
+          name="quizz[image-url]"
+        />
+        <input
+          id="creater-input-questions-numbersTres"
+          placeholder="Quantidade de perguntas do quizz"
+          class="creater-input"
+          type="number"
+          name="quizz[questions]"
+          min="3"
+        />
+        <input
+          id="creater-input-level-numbersTres"
+          placeholder="Quantidade de níveis do quizz"
+          class="creater-input"
+          type="number"
+          name="quizz[level-numbers]"
+          min="2"
+        />
+      </div>
+      <button onclick="firstCreaterBtn()" class="btn-creater">
+        Prosseguir pra criar perguntas
+      </button>
+    </section>
+    <section id="invalid-input-layer" onclick="invalidInputLayerHidden()" class="invalid-input-layer hidden">
+      <div id="invalid-input-box" class="invalid-input-box">
+        <button onclick="invalidInputLayerHidden()"class="invalid-input-btn">OK</button>
+      </div>
     </section>
     <script src="js/creater-quizz.js"></script>
-</body>
+  </body>
 </html>

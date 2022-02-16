@@ -7,8 +7,6 @@
 :root{
     --buzzColor: #EC362D;
     --buzzgray: #B9B9B9;
-
-
 }
 
 /*Esconder*/
@@ -83,7 +81,6 @@
 .buzz-title{
     font-size: 37px;
     color: #FFFFFF;
-
 }
 .text-title{
     font-weight: 700;

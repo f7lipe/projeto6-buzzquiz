@@ -1,0 +1,14 @@
+.creater-header {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 89px;
+}
+.creater-home {
+    position: absolute;
+    top:69px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

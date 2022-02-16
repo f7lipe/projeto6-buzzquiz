@@ -13,13 +13,14 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" href="css/creater-quizz.css">
     
 </head>
 <body>
     <header class="d-flex justify-content-center align-items-center buzz-title bg-buzz box-shadow">BuzzQuiz</header>
     <main>
         <!-- Tela 1-->
-        <section class="home align-items-center">
+        <section class="home align-items-center hidden">
             <!--Adicionar quiz-->
             <div class="new-quiz d-flex flex-column align-items-center justify-content-center space-around dashed">
                 <p class="text-body text-gray">Você não criou nenhum quiz ainda :(</p>
@@ -54,6 +55,19 @@
                     <p class="text-body shadow-overlay">Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
                 </article>
             </section>
+        </section>
+        <!-- Criacao do quizz -->
+        <section class="creater-home">
+            <div class="creater-header">
+                <p>Comece pelo começo</p>
+            </div>
+            <div class = "creater-input-container">
+                <input id="creater-input-title" class ="creater-input" type="text" name="quizz[title]">
+                <input id="creater-input-image" class ="creater-input" type="text" name="quizz[image-url]">
+                <input id="creater-input-questions-numbers" class ="creater-input" type="number" name="quizz[questions]" min="3">
+                <input id="creater-input-level-numbers" class ="creater-input" type="number" name="quizz[level-numbers]" min="2">
+            </div>
+            <button></button>
         </section>
     </main>  
 </body>

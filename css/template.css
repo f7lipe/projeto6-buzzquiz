@@ -9,6 +9,11 @@ top: 0px;
 z-index: 2;
 }
 
+body {
+    overflow: hidden;
+    background-color: #fafafa;
+}
+
 main{
     margin-top: calc(69px + 31px);
     margin-left: 18px;

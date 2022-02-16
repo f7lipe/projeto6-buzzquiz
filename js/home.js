@@ -22,20 +22,22 @@ function renderQuizzes(quizzes){
             //se falso carregar como todos o quizzes 
             quizType = '.all-quizzes'
         const quizzesDiv = document.querySelector(quizType)
-        console.log(quizzesDiv)
         let quizCardTemplate = `
-        <article class="quiz-card" onClick = "manageView('home')"> 
-        <img  src=${imageUrl}>
+        <article class="quiz-card shadow-overlay" onClick="manageView('home', 'quiz-viewr')"> 
+        <img src=${imageUrl}>
         <p class="text-body">${title}</p>
         </article>`
-
+        /* Impementar em quizCardTemplate ao final da feature 3: onClick = "manageView('home', 'creater-home')"*/
+        
         quizzesDiv.innerHTML += quizCardTemplate
     });
 }
  
-function manageView(className){
-   const div =  document.getElementsByClassName(className)
-   div[0].classList.toggle('hidden')
+function manageView(hidding, showing){
+   const hiddingDiv =  document.getElementsByClassName(hidding)
+   hiddingDiv[0].classList.toggle('hidden')
+   const showingDiv =  document.getElementsByClassName(showing)
+   showingDiv[0].classList.toggle('hidden')
 }
 
 loadQuizzes()

@@ -26,6 +26,7 @@
   width: 100%;
   padding: 15px;
   flex-direction: column;
+  justify-content: top;
   align-items: center;
   background-color: #ffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
@@ -51,9 +52,14 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 input[type="number"] {
   -moz-appearance: textfield;
+}
+input:invalid {
+  border: 2px solid rgb(245, 119, 119);
+}
+input:invalid:focus {
+  background-image: linear-gradient(rgb(248, 217, 217),white);
 }
 .btn-creater {
   width: 324px;
@@ -68,7 +74,66 @@ input[type="number"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff5f4;
+  color: #ffff;
+  border: none;
+  margin-top: 29px;
+}
+
+.creater-input-container-header {
+  align-items: center;
+  margin-top: 10px;
+  width: 341px;
+  height: 23px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+}
+.creater-input-container-header p {
+  margin:0;
+}
+/* caixa de entrada invalida */
+.invalid-input-layer {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+}
+.invalid-input-box {
+  padding: 20px 0 80px 0;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  position: absolute;
+  top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+  width: 350px;
+  background-color: #ffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+.invalid-input-box p {
+  width: 300px;
+}
+.invalid-input-btn {
+  position:absolute;
+  bottom:10px;
+  width: 100px;
+  height: 54px;
+  background-color: #ec362d;
+  border-radius: 15px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffff;
   border: none;
   margin-top: 29px;
 }

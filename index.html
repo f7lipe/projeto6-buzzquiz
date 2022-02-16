@@ -13,13 +13,14 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" href="css/creater-quizz.css">
     
 </head>
 <body>
     <header class="d-flex justify-content-center align-items-center buzz-title bg-buzz box-shadow">BuzzQuiz</header>
     <main>
         <!-- Tela 1-->
-        <section class="home align-items-center">
+        <section class="home align-items-center hidden">
             <!--Adicionar quiz-->
             <div class="new-quiz d-flex flex-column align-items-center justify-content-center space-around dashed">
                 <p class="text-body text-gray">Você não criou nenhum quiz ainda :(</p>
@@ -54,5 +55,18 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/shared.js"></script>
     <script src="js/home.js"></script>
+    <!-- Criacao do quizz -->
+    <section class="creater-home">
+        <div class="creater-header">
+            <p>Comece pelo começo</p>
+        </div>
+        <div class = "creater-input-container">
+            <input id="creater-input-title" placeholder="Título do seu quizz" class ="creater-input" type="text" name="quizz[title]">
+            <input id="creater-input-image" placeholder="URL da imagem do seu quizz" class ="creater-input" type="text" name="quizz[image-url]">
+            <input id="creater-input-questions-numbers" placeholder="Quantidade de perguntas do quizz" class ="creater-input" type="number" name="quizz[questions]" min="3">
+            <input id="creater-input-level-numbers" placeholder="Quantidade de níveis do quizz" class ="creater-input" type="number" name="quizz[level-numbers]" min="2">
+        </div>
+        <button class="btn-creater">Prosseguir pra criar perguntas</button>
+    </section>
 </body>
 </html>

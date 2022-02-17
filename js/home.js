@@ -9,12 +9,9 @@ function loadQuizzes(){
 function renderQuizzes(quizzes){
 
     quizzes.data.forEach(quiz => {
-        const id = quiz.id
+        const id = quiz.id !== null ? quiz.id : ''
 		const title = quiz.title
 		const imageUrl = quiz.image
-        const questions = quiz.questions
-        const levels = quiz.levels
-
         let quizType = null
 
         //verificar se o usuário é o dono do quiz [A SER IMPLEMENTADO]
@@ -23,7 +20,7 @@ function renderQuizzes(quizzes){
             quizType = '.all-quizzes'
         const quizzesDiv = document.querySelector(quizType)
         let quizCardTemplate = `
-        <article class="quiz-card shadow-overlay" onClick="manageView('home', 'quiz-viewr')"> 
+         <article class="quiz-card shadow-overlay" onClick="manageView('home', 'quiz-viewr', ${id})"  > 
         <img src=${imageUrl}>
         <p class="text-body">${title}</p>
         </article>`
@@ -33,11 +30,15 @@ function renderQuizzes(quizzes){
     });
 }
  
-function manageView(hidding, showing){
+function manageView(hidding, showing, id=''){
    const hiddingDiv =  document.getElementsByClassName(hidding)
    hiddingDiv[0].classList.toggle('hidden')
    const showingDiv =  document.getElementsByClassName(showing)
    showingDiv[0].classList.toggle('hidden')
+   //carrega a segunda tela apenas se id !== ''
+   if (id !== ''){
+    loadQuiz(id)
+   }
 }
 
 loadQuizzes()

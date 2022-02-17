@@ -11,6 +11,7 @@
 
 /*Esconder*/
 .hidden {
+    display: none;
     visibility: hidden;
 }
 

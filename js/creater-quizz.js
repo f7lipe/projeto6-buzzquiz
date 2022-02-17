@@ -82,63 +82,51 @@ function invalidInputLayerHidden() {
   invalidInputBox.innerHTML = `<button onclick="invalidInputLayerHidden()"class="invalid-input-btn">OK</button>`;
 }
 
-`<div class="creater-input-container">
-      <div class="creater-input-container-header">
-        <p>Pergunta ${i}</p>
-      </div>
-      <input id="creater-input-question-text${i}" placeholder="Texto da pergunta" class="creater-input" type="text"
-        minlength="10" maxlength="65" name="quizz[title]" />
-      <input id="creater-input-question-color" placeholder="Cor de fundo da pergunta" class="creater-input" type="url"
-        name="quizz[image-url]" />
-        <div class="creater-input-container-header">
-          <p>Resposta Correta</p>
-        </div>
-      <input id="creater-input-questions-answer" placeholder="Resposta correta"
-        class="creater-input" type="number" name="quizz[questions]" min="3" />
-      <input id="creater-input-questions-image" placeholder="URL da imagem" class="creater-input"
-        type="number" name="quizz[level-numbers]" min="2" />
-        <div class="creater-input-container-header">
-          <p>Respostas Incorretas</p>
-        </div>
-      <input id="creater-input-questions-wanswer" placeholder="Resposta incorreta 1"
-        class="creater-input" type="number" name="quizz[questions]" min="3" />
-      <input id="creater-input-questions-wimage" placeholder="URL da imagem 1" class="creater-input"
-        type="number" name="quizz[level-numbers]" min="2" />
-        <input id="creater-input-questions-wanswer" placeholder="Resposta incorreta 2"
-        class="creater-input" type="number" name="quizz[questions]" min="3" />
-      <input id="creater-input-questions-wimage" placeholder="URL da imagem 2" class="creater-input"
-        type="number" name="quizz[level-numbers]" min="2" />
-        <input id="creater-input-questions-wanswer" placeholder="Resposta incorreta 3"
-        class="creater-input" type="number" name="quizz[questions]" min="3" />
-      <input id="creater-input-questions-wimage" placeholder="URL da imagem 3" class="creater-input"
-        type="number" name="quizz[level-numbers]" min="2" />
-    </div>
-    <div id="creater-input-questions-minimized" class="questions-minimized">
-      <div class="creater-input-container-header">
-        <p>Pergunta 2</p>
-      </div>
-      <ion-icon class="icon-create-outline"name="create-outline"></ion-icon>
-    </div>
-    </div>
-    <div id="creater-input-questions-minimized" class="questions-minimized">
-      <div class="creater-input-container-header">
-        <p>Pergunta 3</p>
-      </div>
-      <ion-icon class="icon-create-outline"name="create-outline"></ion-icon>
-    </div>
-    </div>
-    <button onclick="firstCreaterBtn()" class="btn-creater">
-      Prosseguir pra criar níveis
-    </button>
-
-
-
-
-
-
-
-
+`<div class="creater-header">
+<p>Crie suas perguntas</p>
+</div>
+<div id="questions-minimized-${i}" class="questions-minimized hidden">
+<div class="creater-input-container-header">
+  <p>Pergunta 1</p>
+</div>
+<ion-icon class="icon-create-outline"name="create-outline"></ion-icon>
+</div>
+<div class="creater-input-container">
+<div class="creater-input-container-header">
+  <p>Pergunta 1</p>
+</div>
+<input id="creater-input-question-text${i}" placeholder="Texto da pergunta" class="creater-input" type="text"
+  minlength="10" maxlength="65" name="quizz[title]" />
+<input id="creater-input-question-color${i}" placeholder="Cor de fundo da pergunta" class="creater-input" type="url"
+  name="quizz[image-url]" />
+  <div class="creater-input-container-header">
+    <p>Resposta Correta</p>
+  </div>
+<input id="creater-input-questions-answer${i}" placeholder="Resposta correta"
+  class="creater-input" type="number" name="quizz[questions]" min="3" />
+<input id="creater-input-questions-image${i}" placeholder="URL da imagem" class="creater-input"
+  type="number" name="quizz[level-numbers]" min="2" />
+  <div class="creater-input-container-header">
+    <p>Respostas Incorretas</p>
+  </div>
+<input id="creater-input-questions-wanswer${i}" placeholder="Resposta incorreta 1"
+  class="creater-input" type="number" name="quizz[questions]" min="3" />
+<input id="creater-input-questions-wimage${i}" placeholder="URL da imagem 1" class="creater-input"
+  type="number" name="quizz[level-numbers]" min="2" />
+  <input id="creater-input-questions-wanswer${i}" placeholder="Resposta incorreta 2"
+  class="creater-input" type="number" name="quizz[questions]" min="3" />
+<input id="creater-input-questions-wimage${i}" placeholder="URL da imagem 2" class="creater-input"
+  type="number" name="quizz[level-numbers]" min="2" />
+  <input id="creater-input-questions-wanswer${i}" placeholder="Resposta incorreta 3"
+  class="creater-input" type="number" name="quizz[questions]" min="3" />
+<input id="creater-input-questions-wimage${i}" placeholder="URL da imagem 3" class="creater-input"
+  type="number" name="quizz[level-numbers]" min="2" />
+</div>
+</div>
+<button onclick="firstCreaterBtn()" class="btn-creater">
+Prosseguir pra criar níveis
+</button>
+`
 // botao de prosseguir da pagina 3.2 para a 3.3
 function secondCreaterBtn () {
-
 }

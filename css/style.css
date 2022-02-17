@@ -2,7 +2,9 @@
 *{
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+
 }
+
 
 :root{
     --buzzColor: #EC362D;
@@ -44,7 +46,6 @@
     font-size: 20px;
     color: white;
     border-color: transparent;
-
 }
 
 /*Efeitos*/
@@ -64,12 +65,26 @@
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%); /* W3C */
 }
 
+.overlay{
+    outline: 72px solid rgba(0, 0, 0, 0.6) !important;
+    outline-offset: -72px;
+    overflow: hidden;
+    position: absolute;
+    height: 142px;
+    width: 100%;
+    object-fit:cover;
+}
+
 /*Flex-box*/
 .d-flex{
     display: flex;
 }
 .flex-column{
     flex-direction: column;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
 }
 .justify-content-center{
     justify-content: center;
@@ -86,6 +101,8 @@
 .align-items-center{
     align-items: center;
 }
+
+
 
 /*Texto e fonte*/
 .buzz-title{
@@ -106,4 +123,16 @@
     color: var(--buzzgray);
 }
 
+.text-center{
+    text-align: center;
+}
+.answer-title{
+    font-size: 13px;
+    font-weight: 700;
+}
 
+.box-title{
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+}

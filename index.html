@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,277 +9,96 @@
     <!--fontes-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <!--estilos-->
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/template.css" />
     <link rel="stylesheet" href="css/creater-quizz.css" />
-  </head>
+</head>
 
-  <body>
-    <header
-      class="d-flex justify-content-center align-items-center buzz-title bg-buzz box-shadow"
-    >
-      BuzzQuiz
+<body>
+    <header class="d-flex justify-content-center align-items-center buzz-title bg-buzz box-shadow">
+        BuzzQuiz
     </header>
     <!-- Tela 1 -->
     <section class="home align-items-center hidden">
-      <!--Adicionar quiz-->
-      <div
-        class="new-quiz d-flex flex-column align-items-center justify-content-center space-around dashed"
-      >
-        <p class="text-body text-gray">Você não criou nenhum quiz ainda :(</p>
-        <button
-          class="add-quizz btn-phill dashed-red"
-          onClick="manageView('home', 'creater-home')"
-        >
+        <!--Adicionar quiz-->
+        <div class="new-quiz d-flex flex-column align-items-center justify-content-center space-around dashed">
+            <p class="text-body text-gray">Você não criou nenhum quiz ainda :(</p>
+            <button class="add-quizz btn-phill dashed-red" onClick="manageView('home', 'creater-home')">
           Criar Quizz
         </button>
-      </div>
-      <!-- Lista de quizzes-->
-      <section class="quizzes">
-        <!--Quizzes do usuário-->
-        <div class="users-quizzes">
-          <div class="d-flex align-items-center space-between">
-            <p class="text-title">Seus quizes</p>
-            <button
-              class="add-quizz btn-circle"
-              onClick="manageView('home', 'creater-home')"
-            >
+        </div>
+        <!-- Lista de quizzes-->
+        <section class="quizzes">
+            <!--Quizzes do usuário-->
+            <div class="users-quizzes">
+                <div class="d-flex align-items-center space-between">
+                    <p class="text-title">Seus quizes</p>
+                    <button class="add-quizz btn-circle" onClick="manageView('home', 'creater-home')">
               +
             </button>
-            <!-- Será preenchido dinamicamente -->
-          </div>
-        </div>
-        <!--Todos os quizzs-->
-        <div class="all-quizzes">
-          <p class="text-title">Todos os quizes</p>
-          <!-- Será preenchido dinamicamente -->
-        </div>
-      </section>
+                    <!-- Será preenchido dinamicamente -->
+                </div>
+            </div>
+            <!--Todos os quizzs-->
+            <div class="all-quizzes">
+                <p class="text-title">Todos os quizes</p>
+                <!-- Será preenchido dinamicamente -->
+            </div>
+        </section>
     </section>
-    
+
     <!-- Tela 2 -->
     <section class="quiz-viewr hidden"></section>
     <!-- Criacao do quizz -->
     <!-- Tela 3.1 -->
-    <section id="creater-screen-one" class="creater-home hidden">
-      <div class="creater-header">
-        <p>Comece pelo começo</p>
-      </div>
-      <div class="creater-input-container">
-        <input
-          id="creater-input-title"
-          placeholder="Título do seu quizz"
-          class="creater-input"
-          type="text"
-          minlength="20"
-          maxlength="65"
-          name="quizz[title]"
-        />
-        <input
-          id="creater-input-image"
-          placeholder="URL da imagem do seu quizz"
-          class="creater-input"
-          type="url"
-          name="quizz[image-url]"
-        />
-        <input
-          id="creater-input-questions-numbers"
-          placeholder="Quantidade de perguntas do quizz"
-          class="creater-input"
-          type="number"
-          name="quizz[questions]"
-          min="3"
-        />
-        <input
-          id="creater-input-level-numbers"
-          placeholder="Quantidade de níveis do quizz"
-          class="creater-input"
-          type="number"
-          name="quizz[level-numbers]"
-          min="2"
-        />
-      </div>
-      <button onclick="secondCreaterBtn()" class="btn-creater">
+    <section id="creater-screen-one" class="creater-home">
+        <div class="creater-header">
+            <p>Comece pelo começo</p>
+        </div>
+        <div class="creater-input-container">
+            <input id="creater-input-title" placeholder="Título do seu quizz" class="creater-input" type="text" minlength="20" maxlength="65" name="quizz[title]" />
+            <input id="creater-input-image" placeholder="URL da imagem do seu quizz" class="creater-input" type="url" name="quizz[image-url]" />
+            <input id="creater-input-questions-numbers" placeholder="Quantidade de perguntas do quizz" class="creater-input" type="number" name="quizz[questions]" min="3" />
+            <input id="creater-input-level-numbers" placeholder="Quantidade de níveis do quizz" class="creater-input" type="number" name="quizz[level-numbers]" min="2" />
+        </div>
+        <button onclick="firstCreaterBtn()" class="btn-creater">
         Prosseguir pra criar perguntas
       </button>
     </section>
     <!-- Tela 3.2 -->
-    <section id="creater-screen-two" class="creater-home">
-      <div class="creater-header">
-        <p>Crie suas perguntas</p>
-      </div>
-      <div id="questions-minimized-1" class="questions-minimized hidden">
-        <div class="creater-input-container-header">
-          <p>Pergunta 1</p>
-        </div>
-        <ion-icon class="icon-create-outline" name="create-outline"></ion-icon>
-      </div>
-      <div class="creater-input-container">
-        <div class="creater-input-container-header">
-          <p>Pergunta 1</p>
-        </div>
-        <input
-          id="creater-input-question-text"
-          placeholder="Texto da pergunta"
-          class="creater-input"
-          type="text"
-          minlength="10"
-          maxlength="65"
-          name="quizz[title]"
-        />
-        <input
-          id="creater-input-question-color"
-          placeholder="Cor de fundo da pergunta"
-          class="creater-input"
-          type="url"
-          name="quizz[image-url]"
-        />
-        <div class="creater-input-container-header">
-          <p>Resposta Correta</p>
-        </div>
-        <input
-          id="creater-input-questions-answer"
-          placeholder="Resposta correta"
-          class="creater-input"
-          type="number"
-          name="quizz[questions]"
-          min="3"
-        />
-        <input
-          id="creater-input-questions-image"
-          placeholder="URL da imagem"
-          class="creater-input"
-          type="number"
-          name="quizz[level-numbers]"
-          min="2"
-        />
-        <div class="creater-input-container-header">
-          <p>Respostas Incorretas</p>
-        </div>
-        <input
-          id="creater-input-questions-wanswer"
-          placeholder="Resposta incorreta 1"
-          class="creater-input"
-          type="number"
-          name="quizz[questions]"
-          min="3"
-        />
-        <input
-          id="creater-input-questions-wimage"
-          placeholder="URL da imagem 1"
-          class="creater-input"
-          type="number"
-          name="quizz[level-numbers]"
-          min="2"
-        />
-        <input
-          id="creater-input-questions-wanswer"
-          placeholder="Resposta incorreta 2"
-          class="creater-input"
-          type="number"
-          name="quizz[questions]"
-          min="3"
-        />
-        <input
-          id="creater-input-questions-wimage"
-          placeholder="URL da imagem 2"
-          class="creater-input"
-          type="number"
-          name="quizz[level-numbers]"
-          min="2"
-        />
-        <input
-          id="creater-input-questions-wanswer"
-          placeholder="Resposta incorreta 3"
-          class="creater-input"
-          type="number"
-          name="quizz[questions]"
-          min="3"
-        />
-        <input
-          id="creater-input-questions-wimage"
-          placeholder="URL da imagem 3"
-          class="creater-input"
-          type="number"
-          name="quizz[level-numbers]"
-          min="2"
-        />
-      </div>
-      <div>
-      <button onclick="firstCreaterBtn()" class="btn-creater">
-        Prosseguir pra criar níveis
-      </button>
-    </div>
+    <section id="creater-screen-two" class="creater-home hidden">
     </section>
     <section id="creater-screen-tree" class="creater-home hidden">
-      <div class="creater-header">
-        <p>Comece pelo começo</p>
-      </div>
-      <div class="creater-input-container">
-        <input
-          id="creater-input-titleTres"
-          placeholder="Título do seu quizz"
-          class="creater-input"
-          type="text"
-          name="quizz[title]"
-        />
-        <input
-          id="creater-input-imageTres"
-          placeholder="URL da imagem do seu quizz"
-          class="creater-input"
-          type="text"
-          name="quizz[image-url]"
-        />
-        <input
-          id="creater-input-questions-numbersTres"
-          placeholder="Quantidade de perguntas do quizz"
-          class="creater-input"
-          type="number"
-          name="quizz[questions]"
-          min="3"
-        />
-        <input
-          id="creater-input-level-numbersTres"
-          placeholder="Quantidade de níveis do quizz"
-          class="creater-input"
-          type="number"
-          name="quizz[level-numbers]"
-          min="2"
-        />
-      </div>
-      <button onclick="firstCreaterBtn()" class="btn-creater">
+        <div class="creater-header">
+            <p>Comece pelo começo</p>
+        </div>
+        <div class="creater-input-container">
+            <input id="creater-input-titleTres" placeholder="Título do seu quizz" class="creater-input" type="text" name="quizz[title]" />
+            <input id="creater-input-imageTres" placeholder="URL da imagem do seu quizz" class="creater-input" type="text" name="quizz[image-url]" />
+            <input id="creater-input-questions-numbersTres" placeholder="Quantidade de perguntas do quizz" class="creater-input" type="number" name="quizz[questions]" min="3" />
+            <input id="creater-input-level-numbersTres" placeholder="Quantidade de níveis do quizz" class="creater-input" type="number" name="quizz[level-numbers]" min="2" />
+        </div>
+        <button onclick="firstCreaterBtn()" class="btn-creater">
         Prosseguir pra criar perguntas
       </button>
     </section>
-    <section
-      id="invalid-input-layer"
-      onclick="invalidInputLayerHidden()"
-      class="invalid-input-layer hidden"
-    >
-      <div id="invalid-input-box" class="invalid-input-box">
-        <button onclick="invalidInputLayerHidden()" class="invalid-input-btn">
+    <section id="invalid-input-layer" onclick="invalidInputLayerHidden()" class="invalid-input-layer hidden">
+        <div id="invalid-input-box" class="invalid-input-box">
+            <button onclick="invalidInputLayerHidden()" class="invalid-input-btn">
           OK
         </button>
-      </div>
+        </div>
     </section>
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/shared.js"></script>
     <script src="js/home.js"></script>
     <script src="js/creater-quizz.js"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-  </body>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
 </html>

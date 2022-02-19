@@ -13,7 +13,6 @@
     color: #000000;
     flex-shrink: 0;
 }
-
 .creater-home {
     box-sizing: content-box;
     position: absolute;
@@ -27,7 +26,6 @@
     align-items: center;
     flex-shrink: 0;
 }
-
 .creater-input-container {
     display: flex;
     width: 100%;
@@ -40,7 +38,18 @@
     flex-shrink: 0;
     margin-bottom: 20px;
 }
-
+.creater-level-container {
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    background-color: #ffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    margin-bottom: 20px;
+}
 .creater-input {
     font-family: Roboto;
     font-style: italic;
@@ -57,25 +66,23 @@
     padding: 14px 0 11px 13px;
     outline: none;
 }
-
+.creater-input.invalid{
+    background-color: rgba(255, 233, 233, 1);
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
 input[type="number"] {
     -moz-appearance: textfield;
 }
-
-input:invalid {
+input.invalid {
     border: 2px solid rgb(245, 119, 119);
 }
-
-input:invalid:focus {
-    background-image: linear-gradient(rgb(248, 217, 217), white);
+input:focus {
+    background-image: linear-gradient(rgb(241, 238, 238), white);
 }
-
 .btn-creater {
     flex-shrink: 0;
     width: 324px;
@@ -94,7 +101,6 @@ input:invalid:focus {
     border: none;
     margin-bottom: 60px;
 }
-
 .creater-input-container-header {
     align-items: center;
     margin-top: 30px;
@@ -106,66 +112,12 @@ input:invalid:focus {
     font-weight: bold;
     font-size: 20px;
 }
-
 .creater-input-container-header p {
     margin: 0;
 }
-
-
-/* caixa de entrada invalida */
-
-.invalid-input-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.invalid-input-box {
-    padding: 20px 0 80px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: top;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 350px;
-    background-color: #ffff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    z-index: 1;
-}
-
-.invalid-input-box p {
-    width: 300px;
-}
-
-.invalid-input-btn {
-    position: absolute;
-    bottom: 10px;
-    width: 100px;
-    height: 54px;
-    background-color: #ec362d;
-    border-radius: 15px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 21px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffff;
-    border: none;
-    margin-top: 29px;
-}
-
 .questions-minimized.hidden {
     display: none;
 }
-
 .questions-minimized {
     margin-top: 15px;
     display: flex;
@@ -178,12 +130,22 @@ input:invalid:focus {
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
-
+.levels-minimized {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 17px;
+    width: 100%;
+    height: 74px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
 .icon-create-outline {
     font-size: 30px;
     fill: #000000;
 }
-
 .creater-questions {
     position: absolute;
     width: 100%;
@@ -192,12 +154,25 @@ input:invalid:focus {
     flex-direction: column;
     align-items: center;
 }
-
 .creater-input-container.hidden {
     display: none;
 }
-
 .second-btn {
     margin-top: 20px;
     margin-bottom: 10px;
+}
+.form-control {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+}
+.form-control small {
+    visibility: hidden;
+    position: absolute;
+    bottom:-8px;
+    left: 10px;
+    color:red;
+}
+.form-control small.visible {
+    visibility: visible;
 }

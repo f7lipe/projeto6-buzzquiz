@@ -12,6 +12,10 @@ z-index: 2;
 body {
     background-color: #fafafa;
 }
+
+.home{
+    margin-top: calc(69px + 2%);
+}
 .new-quiz{
     height: 181px;
     padding: 25px;

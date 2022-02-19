@@ -25,9 +25,9 @@
     background-color: white;
     height: 436px;
     width: 375px;
-    top: calc(100px);
+    top: calc(200px);
     padding: 5px;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
 }
 
 .level-box .title-box{

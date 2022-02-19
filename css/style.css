@@ -75,6 +75,10 @@
     object-fit:cover;
 }
 
+.opacity{
+    opacity: .6;
+}
+
 /*Flex-box*/
 .d-flex{
     display: flex;
@@ -85,6 +89,9 @@
 
 .flex-wrap{
     flex-wrap: wrap;
+}
+.flex-start{
+    justify-content: flex-start;
 }
 .justify-content-center{
     justify-content: center;
@@ -123,6 +130,14 @@
     color: var(--buzzgray);
 }
 
+.text-red{
+    color: var(--buzzColor);
+}
+
+.text-green{
+    color: forestgreen;
+}
+
 .text-center{
     text-align: center;
 }
@@ -135,4 +150,10 @@
     font-size: 18px;
     font-weight: 700;
     color: white;
+}
+
+
+
+.no-interaction{
+    pointer-events: none;
 }

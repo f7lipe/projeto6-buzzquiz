@@ -1,139 +1,203 @@
 .creater-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 89px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 23px;
-  display: flex;
-  align-items: center;
-  color: #000000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 89px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+    flex-shrink: 0;
 }
+
 .creater-home {
-  position: absolute;
-  top: 69px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    box-sizing: content-box;
+    position: absolute;
+    top: 69px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-shrink: 0;
 }
+
 .creater-input-container {
-  display: flex;
-  width: 100%;
-  padding: 15px;
-  flex-direction: column;
-  justify-content: top;
-  align-items: center;
-  background-color: #ffff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    background-color: #ffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    margin-bottom: 20px;
 }
+
 .creater-input {
-  font-family: Roboto;
-  font-style: italic;
-  font-weight: normal;
-  font-size: 19px;
-  line-height: 22px;
-  color: #bababa;
-  width: 341px;
-  height: 46px;
-  margin: 9px;
-  border: 1px solid #d1d1d1;
-  border-radius: 5px;
-  scroll-behavior: none;
-  padding: 14px 0 11px 13px;
-  outline: none;
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 19px;
+    line-height: 22px;
+    color: #bababa;
+    width: 341px;
+    height: 46px;
+    margin: 9px;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    scroll-behavior: none;
+    padding: 14px 0 11px 13px;
+    outline: none;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
+
 input[type="number"] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
+
 input:invalid {
-  border: 2px solid rgb(245, 119, 119);
+    border: 2px solid rgb(245, 119, 119);
 }
+
 input:invalid:focus {
-  background-image: linear-gradient(rgb(248, 217, 217),white);
+    background-image: linear-gradient(rgb(248, 217, 217), white);
 }
+
 .btn-creater {
-  width: 324px;
-  height: 54px;
-  background-color: #ec362d;
-  border-radius: 15px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 21px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffff;
-  border: none;
-  margin-top: 29px;
+    flex-shrink: 0;
+    width: 324px;
+    height: 54px;
+    background-color: #ec362d;
+    border-radius: 15px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffff;
+    border: none;
+    margin-bottom: 60px;
 }
 
 .creater-input-container-header {
-  align-items: center;
-  margin-top: 10px;
-  width: 341px;
-  height: 23px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 341px;
+    height: 23px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
 }
-.creater-input-container-header p {
-  margin:0;
-}
-/* caixa de entrada invalida */
-.invalid-input-layer {
-  position: absolute;
-  top:0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 
+.creater-input-container-header p {
+    margin: 0;
 }
+
+
+/* caixa de entrada invalida */
+
+.invalid-input-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .invalid-input-box {
-  padding: 20px 0 80px 0;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: top;
-  position: absolute;
-  top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-  width: 350px;
-  background-color: #ffff;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px 0 80px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    background-color: #ffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    z-index: 1;
 }
+
 .invalid-input-box p {
-  width: 300px;
+    width: 300px;
 }
+
 .invalid-input-btn {
-  position:absolute;
-  bottom:10px;
-  width: 100px;
-  height: 54px;
-  background-color: #ec362d;
-  border-radius: 15px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 21px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffff;
-  border: none;
-  margin-top: 29px;
+    position: absolute;
+    bottom: 10px;
+    width: 100px;
+    height: 54px;
+    background-color: #ec362d;
+    border-radius: 15px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffff;
+    border: none;
+    margin-top: 29px;
+}
+
+.questions-minimized.hidden {
+    display: none;
+}
+
+.questions-minimized {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 17px;
+    width: 100%;
+    height: 74px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+
+.icon-create-outline {
+    font-size: 30px;
+    fill: #000000;
+}
+
+.creater-questions {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.creater-input-container.hidden {
+    display: none;
+}
+
+.second-btn {
+    margin-top: 20px;
+    margin-bottom: 10px;
 }

@@ -24,7 +24,7 @@ function renderQuizzes(quizzes){
         <img src=${imageUrl}>
         <p class="text-body">${title}</p>
         </article>`
-        /* Impementar em quizCardTemplate ao final da feature 3: onClick = "manageView('home', 'creater-home')"*/
+        /* Implementar em quizCardTemplate ao final da feature 3: onClick = "manageView('home', 'creater-home')"*/
         
         quizzesDiv.innerHTML += quizCardTemplate
     });

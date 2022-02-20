@@ -1,5 +1,5 @@
 // declaracao para o post
-let quizzCreated= {}
+let quizzCreated = [];
 // declaracoes pagina 3.1
 let quizzCreateTitle = null;
 let quizzCreateImage = null;
@@ -8,6 +8,8 @@ let quizzCreateLevelNumb = null;
 let quizzLayerOne = document.getElementById("creater-screen-one");
 let quizzLayerTwo = document.getElementById("creater-screen-two");
 let quizzLayerTree = document.getElementById("creater-screen-tree");
+let quizzLayerFour = document.getElementById("creater-screen-four");
+let userQuizz = []
 //declaracoes pagina 3.2
 // botao para a proxima pagina (seguir para a 3.2 de perguntas)
 // ele inicia a validacao dos campos da tela 3.1
@@ -30,16 +32,18 @@ function quizzCreateValidateOne() {
   let listSmall = document
     .getElementById("creater-input-container-one")
     .querySelectorAll("small");
-  let listInput = document.getElementById('creater-input-container-one').querySelectorAll("input");
+  let listInput = document
+    .getElementById("creater-input-container-one")
+    .querySelectorAll("input");
   listSmall.forEach((small) => {
     if (small.classList.contains("visible")) {
       small.classList.remove("visible");
     }
-  listInput.forEach(input =>{
-    if(input.classList.contains("invalid")){
-    input.classList.remove("invalid")
-    }
-  })
+    listInput.forEach((input) => {
+      if (input.classList.contains("invalid")) {
+        input.classList.remove("invalid");
+      }
+    });
   });
   let listInputValue = [
     quizzCreateImage,
@@ -61,24 +65,23 @@ function quizzCreateValidateOne() {
   // e se estiverem preenchidas fora padrao adiciona outra mensagem
   if (contadorInvalid !== 0 || contadorNull !== 0) {
     listInvalid.forEach((inputInvalid) => {
-      inputInvalid.classList.add('invalid')
+      inputInvalid.classList.add("invalid");
       inputInvalid.parentNode.querySelector("small").classList.add("visible");
     });
-    listInput.forEach(input => {
-      if(input.value === "") {
-        console.log('uoba')
-        input.classList.add('invalid');
+    listInput.forEach((input) => {
+      if (input.value === "") {
+        input.classList.add("invalid");
         input.parentNode.querySelector("small").classList.add("visible");
       }
-    })
+    });
   } else {
     // se passar tudo na paz ele exibe a proxima pagina de perguntas 3.2
     quizzCreated = {
       title: quizzCreateTitle,
       image: quizzCreateImage,
-      questions:[],
-      levels:[]
-    }
+      questions: [],
+      levels: []
+    };
     quizzLayerOne.classList.add("hidden");
     quizzLayerTwo.classList.remove("hidden");
     createrLayerTwoRenderizer();
@@ -215,7 +218,7 @@ function layerQuestionsToggle(i) {
   questionBtnHidden.classList.add("hidden");
   questionVisible.classList.remove("hidden");
   questionVisible.classList.add("visible");
-  let altura = 69 + (i-1)*74
+  let altura = 69 + (i - 1) * 74;
   window.scrollTo({ top: altura, behavior: "smooth" });
 }
 
@@ -225,128 +228,175 @@ function quizzCreateValidateTwo() {
   let regExpHex = new RegExp(/^[#][0-9A-F]{6}$/i);
   let contador = 0;
   for (i = 1; i <= quizzCreateQuestionsNumb; i++) {
-    let contadorNull = 0
     let questionText = document.getElementById(
       `creater-input-question-text-${i}`
     );
     let questionColor = document.getElementById(
       `creater-input-question-color-${i}`
-    )
-    let questionAnswer = document.getElementById(`creater-input-questions-answer${i}`);
-    let questionImage = document.getElementById(`creater-input-questions-image${i}`);
-
-    if(questionColor.classList.contains('invalid')){
-     questionColor.classList.remove('invalid');
-      questionColor.parentNode.querySelector('small').classList.remove('visible')
+    );
+    let questionAnswer = document.getElementById(
+      `creater-input-questions-answer${i}`
+    );
+    let questionImage = document.getElementById(
+      `creater-input-questions-image${i}`
+    );
+    let nullCounter = 0;
+    if (questionColor.classList.contains("invalid")) {
+      questionColor.classList.remove("invalid");
+      questionColor.parentNode
+        .querySelector("small")
+        .classList.remove("visible");
     }
-    if(questionText.classList.contains('invalid')){
-      questionText.classList.remove('invalid');
-      questionText.parentNode.querySelector('small').classList.remove('visible');
+    if (questionText.classList.contains("invalid")) {
+      questionText.classList.remove("invalid");
+      questionText.parentNode
+        .querySelector("small")
+        .classList.remove("visible");
     }
-    if (questionAnswer.classList.contains('invalid')){
-      questionAnswer.classList.remove('invalid');
-      questionAnswer.parentNode.querySelector('small').classList.remove('visible');
+    if (questionAnswer.classList.contains("invalid")) {
+      questionAnswer.classList.remove("invalid");
+      questionAnswer.parentNode
+        .querySelector("small")
+        .classList.remove("visible");
     }
-    if (questionImage.classList.contains('invalid')){
-      questionImage.classList.remove('invalid')
-      questionImage.parentNode.querySelector('small').classList.remove('visible')
+    if (questionImage.classList.contains("invalid")) {
+      questionImage.classList.remove("invalid");
+      questionImage.parentNode
+        .querySelector("small")
+        .classList.remove("visible");
     }
-    if (!regExpHex.test(questionColor.value)||questionColor.value === "") {
-      questionColor.classList.add('invalid');
-      questionColor.parentNode.querySelector('small').classList.add('visible')
+    if (!regExpHex.test(questionColor.value) || questionColor.value === "") {
+      questionColor.classList.add("invalid");
+      questionColor.parentNode.querySelector("small").classList.add("visible");
       contador++;
     }
-    if(questionText.classList.contains(':invalid')||questionText.value === ""){
-      questionText.classList.add('invalid');
-      questionText.parentNode.querySelector('small').classList.add('visible');
+    if (
+      questionText.classList.contains(":invalid") ||
+      questionText.value === ""
+    ) {
+      questionText.classList.add("invalid");
+      questionText.parentNode.querySelector("small").classList.add("visible");
       contador++;
     }
-    if(questionAnswer.value === ""){
-      questionAnswer.classList.add('invalid');
-      questionAnswer.parentNode.querySelector('small').classList.add('visible')
-      contador++
+    if (questionAnswer.value === "") {
+      questionAnswer.classList.add("invalid");
+      questionAnswer.parentNode.querySelector("small").classList.add("visible");
+      contador++;
     }
-    if (questionImage.classList.contains(':invalid')||questionImage.value === "") {
-      questionImage.classList.add('invalid');
-      questionImage.parentNode.querySelector('small').classList.add('visible');
-      contador++
+    if (
+      questionImage.classList.contains(":invalid") ||
+      questionImage.value === ""
+    ) {
+      questionImage.classList.add("invalid");
+      questionImage.parentNode.querySelector("small").classList.add("visible");
+      contador++;
     }
-    for (j=1; j<=3;j++){
-      let wrongAnswer = document.getElementById(`creater-input-questions-wanswer${i}-${j}`)
-      let wrongImage = document.getElementById(`creater-input-questions-wimage${i}-${j}`)
-      if (wrongAnswer.classList.contains('invalid')){
-        wrongAnswer.classList.remove('invalid');
-        wrongAnswer.parentNode.querySelector('small').classList.remove('visible')
+    for (j = 1; j <= 3; j++) {
+      let wrongAnswer = document.getElementById(
+        `creater-input-questions-wanswer${i}-${j}`
+      );
+      let wrongImage = document.getElementById(
+        `creater-input-questions-wimage${i}-${j}`
+      );
+      if (wrongAnswer.classList.contains("invalid")) {
+        wrongAnswer.classList.remove("invalid");
+        wrongAnswer.parentNode
+          .querySelector("small")
+          .classList.remove("visible");
       }
-      if(wrongImage.classList.contains('invalid')){
-        wrongImage.classList.remove('invalid');
-        wrongImage.parentNode.querySelector('small').classList.remove('visible')
+      if (wrongImage.classList.contains("invalid")) {
+        wrongImage.classList.remove("invalid");
+        wrongImage.parentNode
+          .querySelector("small")
+          .classList.remove("visible");
       }
-      if(wrongAnswer.value === "" && wrongImage.value ==="") {
-        contadorNull++
+      if (wrongAnswer.value === "" && wrongImage.value === "") {
+        nullCounter++;
       } else if (wrongAnswer.value === "") {
-        wrongAnswer.classList.add('invalid');
-        wrongAnswer.parentNode.querySelector('small').classList.add('visible');
-        contador++
-      } else if(wrongImage.value === ""||wrongImage.classList.contains(':invalid')) {
-        wrongImage.classList.add('invalid');
-        wrongImage.parentNode.querySelector('small').classList.add('visible');
-        contador++
+        wrongAnswer.classList.add("invalid");
+        wrongAnswer.parentNode.querySelector("small").classList.add("visible");
+        contador++;
+      } else if (
+        wrongImage.value === "" ||
+        wrongImage.classList.contains(":invalid")
+      ) {
+        wrongImage.classList.add("invalid");
+        wrongImage.parentNode.querySelector("small").classList.add("visible");
+        contador++;
       }
     }
-    if (contadorNull = 3) {
-      let wrongAnswer = document.getElementById(`creater-input-questions-wanswer${i}-1`)
-      let wrongImage = document.getElementById(`creater-input-questions-wimage${i}-1`)
-      if(wrongAnswer.classList.contains('invalid')||wrongImage.classList.contains('invalid')){
+    if ((nullCounter === 3)) {
+      let wrongAnswer = document.getElementById(
+        `creater-input-questions-wanswer${i}-1`
+      );
+      let wrongImage = document.getElementById(
+        `creater-input-questions-wimage${i}-1`
+      );
+      contador++;
+      if (
+        wrongAnswer.classList.contains("invalid") ||
+        wrongImage.classList.contains("invalid")
+      ) {
       } else {
-      wrongAnswer.classList.add('invalid');
-      wrongAnswer.parentNode.querySelector('small').classList.add('visible')
-      wrongImage.classList.add('invalid');
-      wrongImage.parentNode.querySelector('small').classList.add('visible')
+        wrongAnswer.classList.add("invalid");
+        wrongAnswer.parentNode.querySelector("small").classList.add("visible");
+        wrongImage.classList.add("invalid");
+        wrongImage.parentNode.querySelector("small").classList.add("visible");
       }
     }
   }
-  if (contador == 0) {
-    saveQuizzValues()
+  if (contador === 0) {
+    saveQuizzValues();
   }
 }
 function saveQuizzValues() {
   for (i = 1; i <= quizzCreateQuestionsNumb; i++) {
     let questionText = document.getElementById(
       `creater-input-question-text-${i}`
-    );
+    ).value;
     let questionColor = document.getElementById(
       `creater-input-question-color-${i}`
-    )
-    let questionAnswer = document.getElementById(`creater-input-questions-answer${i}`);
-    let questionImage = document.getElementById(`creater-input-questions-image${i}`);
-    quizzCreated.questions += {
-      title:questionText,
-      color:questionColor,
-      answers:[
-      {
-        text:questionAnswer,
-        image:questionImage,
-        isCorrectAnswer: true
-      }]
-    }
-    for (j=1; j<=3;j++){
-      let wrongAnswer = document.getElementById(`creater-input-questions-wanswer${i}-${j}`);
-      let wrongImage = document.getElementById(`creater-input-questions-wimage${i}-${j}`);
-      if(wrongAnswer.value!==""){
-        quizzCreated.questions.answers += {
-          text:wrongAnswer,
-          image:wrongImage,
-          isCorrectAnswer:false
+    ).value;
+    let questionAnswer = document.getElementById(
+      `creater-input-questions-answer${i}`
+    ).value;
+    let questionImage = document.getElementById(
+      `creater-input-questions-image${i}`
+    ).value;
+    let questions = {
+      title: questionText,
+      color: questionColor,
+      answers: [
+        {
+          text: questionAnswer,
+          image: questionImage,
+          isCorrectAnswer: true
         }
+      ]
+    }
+    quizzCreated.questions.push(questions);
+    for (j = 1; j <= 3; j++) {
+      let wrongAnswer = document.getElementById(
+        `creater-input-questions-wanswer${i}-${j}`
+      ).value;
+      let wrongImage = document.getElementById(
+        `creater-input-questions-wimage${i}-${j}`
+      ).value;
+      if (wrongAnswer.value != "") {
+        let wrongAns = {
+          text: wrongAnswer,
+          image: wrongImage,
+          isCorrectAnswer: false
+        }
+        quizzCreated.questions[i-1].answers.push(wrongAns)
       }
+    }
   }
-}
-createrLayerTreeRenderizer()
+  createrLayerTreeRenderizer();
 }
 function createrLayerTreeRenderizer() {
-  quizzLayerTwo.classList.add('hidden')
-  quizzLayerTree.classList.remove('hidden')
+  quizzLayerTwo.classList.add("hidden");
+  quizzLayerTree.classList.remove("hidden");
   quizzLayerTree.innerHTML = `<div class="creater-header creater-header-questions">
     <p>Agora, decida os níveis!</p>
     </div>`;
@@ -358,7 +408,7 @@ function createrLayerTreeRenderizer() {
 </div>
 <ion-icon class="icon-create-outline" name="create-outline"></ion-icon>
 </div>
-<div id="creater-level-container${i}" class="creater-input-container hidden">
+<div id="creater-level-container${i}" class="creater-level-container hidden">
 <div class="creater-input-container-header">
   <p>Nível ${i}</p>
 </div>
@@ -367,7 +417,7 @@ function createrLayerTreeRenderizer() {
   placeholder="Título do nível"
   class="creater-input"
   type="text"
-  minlength="20"
+  minlength="10"
   name="quizz[title-question]"
 /><small>Mensagem de erro</small></div>
 <div class="form-control"><input
@@ -376,22 +426,17 @@ function createrLayerTreeRenderizer() {
   class="creater-input"
   type="number"
   name="quizz[percentage]"
-  max="100"
+  max="100" maxlength="3"
 /><small>Mensagem de erro</small></div>
 <div class="form-control"><input
   id="creater-input-level-image${i}"
   placeholder="URL da imagem do nível"
   class="creater-input"
   type="url"
-  name="quizz[questions]"
+  name="quizz[lvlImage]"
 /><small>Mensagem de erro</small></div>
-<div class="form-control"><input
-  id="creater-input-level-descrition${i}"
-  placeholder="Descrição do nível"
-  class="creater-input true-image"
-  type="url"
-  name="quizz[image-URL]"
-/><small>Mensagem de erro</small></div>
+<div class="form-control"><textarea id="creater-input-level-descrition${i}" class="creater-input description" rows="5" 
+placeholder="Descrição do nível" minlength="30"></textarea><small>Mensagem de erro</small></div>
 </div>
 `;
   }
@@ -400,12 +445,13 @@ function createrLayerTreeRenderizer() {
   levelOneBtn.classList.add("hidden");
   levelOne.classList.remove("hidden");
   levelOne.classList.add("visible");
-  quizzLayerTree.innerHTML += `<div class ="second-btn"><button onclick="quizzCreateValidateTwo()" class="btn-creater">
+  quizzLayerTree.innerHTML += `<div class ="second-btn"><button onclick="quizzCreateValidateTree()" class="btn-creater">
   Finalizar Quizz
       </button>
       </div>`;
   window.scrollTo(0, 0);
 }
+
 function layerQuestionsToggleTree(i) {
   let listQuestionBtn = document.querySelectorAll(".levels-minimized");
   let listQuestion = document.querySelectorAll(".creater-level-container");
@@ -425,6 +471,109 @@ function layerQuestionsToggleTree(i) {
   questionBtnHidden.classList.add("hidden");
   questionVisible.classList.remove("hidden");
   questionVisible.classList.add("visible");
-  let altura = 69 + (i-1)*50
+  let altura = 69 + (i - 1) * 50;
   window.scrollTo({ top: altura, behavior: "smooth" });
+}
+function quizzCreateValidateTree() {
+  let contador = 0;
+  let zeroCounter = 0;
+  for(i = 1; i <= quizzCreateLevelNumb; i++) {
+    let levelTitle = document.getElementById(`creater-input-level-text-${i}`);
+    let levelPercentage = document.getElementById(`creater-input-level-percentage-${i}`);
+    let levelImage = document.getElementById(`creater-input-level-image${i}`);
+    let levelDesc = document.getElementById(`creater-input-level-descrition${i}`);
+    if (levelTitle.classList.contains('invalid')) {
+      levelTitle.classList.remove('invalid');
+      levelTitle.parentNode.querySelector('small').classList.remove('visible');
+    }
+    if (levelPercentage.classList.contains('invalid')){
+      levelPercentage.classList.remove('invalid');
+      levelPercentage.parentNode.querySelector('small').classList.remove('visible');
+    }
+    if (levelImage.classList.contains('invalid')){
+      levelImage.classList.remove('invalid');
+      levelImage.parentNode.querySelector('small').classList.remove('visible');
+    }
+    if (levelDesc.classList.contains('invalid')){
+      levelDesc.classList.remove('invalid');
+      levelDesc.parentNode.querySelector('small').classList.remove('visible');
+    }
+    if (levelTitle.value===""||levelTitle.classList.contains(':invalid')) {
+      levelTitle.classList.add('invalid');
+      levelTitle.parentNode.querySelector('small').classList.add('visible');
+      contador++
+    }
+    if (levelPercentage.value ===""||levelPercentage.classList.contains(':invalid')){
+      levelPercentage.classList.add('invalid');
+      levelPercentage.parentNode.querySelector('small').classList.add('visible');
+      contador++
+    }
+    if (levelImage.value===""||levelImage.classList.contains(':invalid')){
+      levelImage.classList.add('invalid');
+      levelImage.parentNode.querySelector('small').classList.add('visible');
+      contador++
+    }
+    if (levelDesc.value===""||levelDesc.classList.contains(':invalid')){
+      levelDesc.classList.add('invalid');
+      levelDesc.parentNode.querySelector('small').classList.add('visible');
+      contador++
+    }
+    if (levelPercentage.value == 0) {
+      zeroCounter++
+    }
+  }
+  if(zeroCounter === 0){
+    let levelPercentage = document.getElementById(`creater-input-level-percentage-1`);
+    if(levelPercentage.classList.contains('invalid')){
+    } else {
+      levelPercentage.classList.add('invalid');
+      levelPercentage.parentNode.querySelector('small').classList.add('visible');
+      contador++
+    }
+  }
+  if(contador===0){
+    saveQuizzValuesTree()
+  }
+}
+function saveQuizzValuesTree() {
+  for(i=1; i <=quizzCreateLevelNumb;i++){
+    let levelTitle = document.getElementById(`creater-input-level-text-${i}`).value;
+    let levelPercentage = document.getElementById(`creater-input-level-percentage-${i}`).value;
+    let levelImage = document.getElementById(`creater-input-level-image${i}`).value;
+    let levelDesc = document.getElementById(`creater-input-level-descrition${i}`).value;
+    let levels = {
+      title: levelTitle,
+			image: levelImage,
+			text: levelDesc,
+			minValue: levelPercentage
+    }
+    quizzCreated.levels.push(levels)
+  createrFinalize()
+}
+}
+
+function createrFinalize() {
+   const quizzToServer = axios.post(`${API_REPO}quizzes`, quizzCreated);
+   quizzToServer.then(layerFourRenderizer(quizzToServer))
+}
+function layerFourRenderizer(quizzToServer) {
+  let userId = quizzToServer.id
+  let nameKey = `quizz${userQuizz.length + 1}`
+  let userIdStr = JSON.stringify(userId)
+  localStorage.setItem(nameKey, userIdStr);
+  quizzLayerTree.classList.add("hidden");
+  quizzLayerFour.classList.remove("hidden");
+  quizzLayerFour.innerHTML = `<div class="creater-header creater-header-questions">
+    <p>Seu quizz está pronto!</p>
+    </div>
+    <div class="div-image"></div>
+    <div class ="second-btn"><button onclick="quizzCreateValidateTree()" class="btn-creater four">
+    Acessar Quizz
+      </button>
+      </div>
+      <div class ="four-btn"><button onclick="quizzCreateValidateTree()" class="btn-creater four-home">
+      Voltar pra home
+      </button>
+      </div>
+    `
 }

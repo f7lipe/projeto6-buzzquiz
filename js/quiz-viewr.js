@@ -7,7 +7,7 @@ const currentSession = {
   rigthAnswers: null,
   answeredQuestions: null
 }
-
+const inner = quizViewrDiv
 function loadQuiz(id) {
   const promise = axios.get(API_REPO + 'quizzes/' + id)
   promise.then(quiz => {
@@ -51,7 +51,7 @@ function renderQuiz(title, image, questions) {
       figures += answerFigure
     })
     i++
-    quizViewrDiv.innerHTML += createCard(questionTitle, questionColor, figures)
+    quizViewrDiv.innerHTML += createCard(questionTitle, questionColor, figures, false)
   });
 }
 
@@ -81,12 +81,12 @@ function selectAnswer(answer, selectedFigure, parentIndex) {
     const userLevel = checkLevel(userScore)
     const title = `${userScore}% de acerto: ${userLevel.text}`
     const answerFigure = `
-    <div class="figure large">
+    <div class="figure d-flex flex-column">
       <img src="${userLevel.image}" alt="">
       <p class="answer-title">${userLevel.text}</p>
     </div>
     `
-    const card = createCard(title, 'red', answerFigure, 'figure-answer')
+    const card = createCard(title, 'red', answerFigure, true)
     quizViewrDiv.innerHTML += card
     addButtons()
     boxes = document.querySelectorAll('.level-box ')
@@ -97,28 +97,43 @@ function selectAnswer(answer, selectedFigure, parentIndex) {
   scrollTo(nextFigure, 2000)
 }
 
-function scrollTo(div, duration){
-  setTimeout(div.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" }), duration)
-}
+
 
 function evaluateScore(rigthAnswers, numberOfQuestions) {
   return Math.round((rigthAnswers / numberOfQuestions) * 100)
 }
 
-function createCard(title, color, figure, figureCLass='') {
+function createCard(title, color, figure, isResultCard) {
   const cardTemplate = `
   <!-- Caixa com o nível do quiz-->
   <div class="level-box d-flex flex-column space-around align-items-center">
     <section class="title-box d-flex align-items-center justify-content-center" style="background: ${color};"> 
       <p class="text-center box-title">${title}</p> 
     </section>
-    <section class=" figures ${figureCLass} d-flex flex-wrap space-between">
+    <section class=" figures d-flex flex-wrap">
       ${figure}
     </section>
   </div>
   `
-  return cardTemplate
+
+  const resultCardTemplate = `
+  <!-- Caixa com o nível do quiz-->
+  <div class="level-box result-card d-flex flex-column space-around align-items-center">
+    <section class="title-box d-flex align-items-center justify-content-center" style="background: red;"> 
+      <p class="text-center box-title">${title}</p> 
+    </section>
+    <section class=" figures d-flex flex-wrap justify-content-center">
+      ${figure}
+    </section>
+  </div>
+  `
+
+  const card = isResultCard ? resultCardTemplate : cardTemplate
+
+  return card
 }
+
+
 
 function checkLevel(score){
   const levels = currentSession.levels
@@ -140,13 +155,29 @@ function checkLevel(score){
 function addButtons(){
   const buttons = `        
   <div class="buttons d-flex flex-column align-items-center justify-content-center">
-  <button class="btn-phill bg-buzz">Reiniciar quiz</button>
-  <button> Voltar para tela de início </button>
+  <button class="btn-phill-fill" onClick=" resetQuizz()">Reiniciar quiz</button>
+  <button class="btn-unfilled text-gray" onClick="backHome()"> Voltar para tela de início </button>
   </div>`
 
   quizViewrDiv.innerHTML+= buttons
 }
 
-function lockInteraction(div){
-  div.classList.add('no-interaction')
+function backHome(){
+  location.reload()
+}
+
+function resetQuizz(){
+
+currentSession.rigthAnswers = null
+currentSession.answeredQuestions = null
+
+const level_boxes = document.querySelectorAll('.level-box ')
+level_boxes.forEach(level_box=>{
+  level_box.remove()
+}) 
+
+document.querySelector('.buttons').remove()
+
+loadQuiz(currentSession.id)
+
 }

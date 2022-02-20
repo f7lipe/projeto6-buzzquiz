@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BuzzQuiz</title>
+    <title>BuzzQuizz</title>
     <!--fontes-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,10 +20,10 @@
 
 <body>
     <header class="d-flex justify-content-center align-items-center buzz-title bg-buzz box-shadow">
-        BuzzQuiz
+        BuzzQuizz
     </header>
     <!-- Tela 1 -->
-    <section class="home align-items-center">
+    <section class="home d-flex flex-column justify-content-center">
         <!--Adicionar quiz-->
         <div class="new-quiz d-flex flex-column align-items-center justify-content-center space-around dashed">
             <p class="text-body text-gray">Você não criou nenhum quiz ainda :(</p>
@@ -44,15 +44,16 @@
                 </div>
             </div>
             <!--Todos os quizzs-->
-            <div class="all-quizzes">
-                <p class="text-title">Todos os quizes</p>
+             <p class="text-title">Todos os quizes</p>
+            <div class="all-quizzes d-flex flex-column space-between">
+               
                 <!-- Será preenchido dinamicamente -->
             </div>
         </section>
     </section>
 
     <!-- Tela 2 -->
-    <section class="quiz-viewr d-flex justify-content flex-column align-items-center hidden">
+    <section class="quiz-viewr d-flex justify-content-center flex-column align-items-center hidden">
     <!-- Imagem com título do quiz-->
     <figure class="header-figure">
         <!-- Será implementado dinamicamente-->

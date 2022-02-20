@@ -26,7 +26,7 @@
     height: 436px;
     width: 375px;
     top: calc(200px);
-    padding: 5px;
+    gap: 5px;
     margin-bottom: 20px;
 }
 
@@ -38,8 +38,15 @@
 
 
 .level-box .figures img{
-    height: 110px;
-    width: 130px;
+    height: 113px;
+    width: 113px;
+    padding: 5px;
+}
+
+.level-box .figures.figure-answer img{
+    height: 100%;
+    width: 100%;
+
 }
 
 .level-box .figures div{
@@ -47,7 +54,18 @@
     width: 130px;
 }
 
+.level-box .figures.figure-answer div{
+    margin: 10px;
+    width: 100%;
+}
+
 
 .level-box .figures p{
     margin: 2px;
+}
+
+.buttons{
+    margin-top: 220px;
+    margin-bottom: 110px;
+    position: relative;
 }

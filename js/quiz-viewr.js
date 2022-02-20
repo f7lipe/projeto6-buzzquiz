@@ -1,79 +1,152 @@
-const quizViewr = '.quiz-viewr'
+const currentSession = {
+  id: null, 
+  title: null, 
+  image: null, 
+  questions: null, 
+  levels: null, 
+  rigthAnswers: null,
+  answeredQuestions: null
+}
 
 function loadQuiz(id) {
   const promise = axios.get(API_REPO + 'quizzes/' + id)
-  promise.then(renderQuiz)
+  promise.then(quiz => {
+    const quizData = quiz.data
+    currentSession['id'] = quizData.id
+    currentSession['title'] = quizData.title
+    currentSession['image'] = quizData.image
+    currentSession['questions'] = quizData.questions
+    currentSession['levels'] = quizData.levels
+
+    renderQuiz(currentSession.title, currentSession.image, currentSession.questions) 
+
+  })
 }
 
-
-function renderQuiz(quiz) {
-
-  const quizData = quiz.data
-  const quizTitle = quizData.title
-  const quizImage = quizData.image
-  const questions = quizData.questions
-  const quizViewrDiv = document.querySelector(quizViewr)
-
-  const templateHeader = `<!-- Imagem com título do quiz-->
-    <figure class="header-figure">
-      <img class="overlay" src="${quizImage}" alt="">
-      <p class="text-body">${quizTitle}</p>
-    </figure>`
-
+function renderQuiz(title, image, questions) {
+  scrollTo(quizViewrDiv, 0)
+  const header = 
+  `
+  <img class="overlay" src="${image}" alt="">
+  <p class="text-body">${title}</p>
+  `
+  const quizHeader = quizViewrDiv.querySelector('.header-figure')
+  quizHeader.innerHTML = header
   let i = 0;
   questions.forEach(question => {
-    const title = question.title
-    const color = question.color
-
-    const bodyTemplateStart = `<!-- Caixa com o nível do quiz-->
-        <article class="level-box d-flex flex-column space-around align-items-center">
-          <section class="title-box d-flex align-items-center justify-content-center" style="background: ${color};"> <p class="text-center box-title">${title}</p> </section>
-            <section class=" figures d-flex flex-wrap space-around">`
-
-    let images = ''
-    const answers = question.answers
-    const shuffledAnswers = answers.sort(comparador)
+    const questionTitle = question.title
+    const questionColor = question.color
+    const questionAnswers = question.answers
+    const shuffledAnswers = questionAnswers.sort(comparador)
+    let figures = ''
     shuffledAnswers.forEach(answer => {
-      const text = answer.text
-      const image = answer.image
-
-      const imageDiv = `<div class="figure" id="${answer.isCorrectAnswer}" onClick = "selectAnswer(${answer.isCorrectAnswer}, this, ${i})">
-            <img src="${image}" alt="">
-            <p class="answer-title">${text}</p>
-          </div>`
-      images += imageDiv
+      const answerText = answer.text
+      const answerImage = answer.image
+      const answerFigure = `
+      <div class="figure" id="${answer.isCorrectAnswer}" onClick = "selectAnswer(${answer.isCorrectAnswer}, this, ${i})">
+        <img src="${answerImage}" alt="">
+        <p class="answer-title">${answerText}</p>
+      </div>
+      `
+      figures += answerFigure
     })
     i++
-    const bodyTemplateEnd = `
-        </section>
-    </article>`
-    const finalTemplate = templateHeader + bodyTemplateStart + images + bodyTemplateEnd
-
-    quizViewrDiv.innerHTML += finalTemplate
+    quizViewrDiv.innerHTML += createCard(questionTitle, questionColor, figures)
   });
 }
 
-function selectAnswer(answer, div, parentIndex) {
-  const boxes = document.querySelectorAll('.level-box ')
+function selectAnswer(answer, selectedFigure, parentIndex) {
+  console.log(currentSession)
+  let boxes = document.querySelectorAll('.level-box ')
   const currentBox = boxes[parentIndex]
   const figures = currentBox.querySelectorAll('.figure')
-  const currentP = div.querySelector('p').classList
-  div.id === "true" ? currentP.add('text-green') : currentP.add('text-red')
 
-  let selectedAnswer = {p: currentP, answer: answer}
-  console.log(selectedAnswer.answer)
+  currentSession['answeredQuestions'] += 1
+  if (answer) { currentSession['rigthAnswers'] += 1 }
 
-  figures.forEach(siblingFigure => {
-    
-    if (siblingFigure !== div) {
-      const siblingFigureP = siblingFigure.querySelector('p').classList
-      siblingFigure.classList.toggle('opacity')
-      siblingFigure.id === "true" ? siblingFigureP.add('text-green') : siblingFigureP.add('text-red')
+  figures.forEach(figure => {
+    lockInteraction(figure)
+    if (figure !== selectedFigure) {
+      figure.classList.toggle('opacity')
     }
-
-    siblingFigure.classList.add('no-interaction')
+    const figureText = figure.querySelector('p').classList
+    figure.id === "true" ? figureText.add('text-green') : figureText.add('text-red')
   })
 
-  const nextFigure = boxes[parentIndex + 1]
-  setTimeout(nextFigure.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" }), 2000)
+  if(currentSession.answeredQuestions === currentSession.questions.length){
+
+    const rigthAnswers = currentSession.rigthAnswers
+    const numberOfQuestions = currentSession.questions.length
+    const userScore = evaluateScore(rigthAnswers, numberOfQuestions)
+    const userLevel = checkLevel(userScore)
+    const title = `${userScore}% de acerto: ${userLevel.text}`
+    const answerFigure = `
+    <div class="figure large">
+      <img src="${userLevel.image}" alt="">
+      <p class="answer-title">${userLevel.text}</p>
+    </div>
+    `
+    const card = createCard(title, 'red', answerFigure, 'figure-answer')
+    quizViewrDiv.innerHTML += card
+    addButtons()
+    boxes = document.querySelectorAll('.level-box ')
+    
+  } 
+
+  const nextFigure = boxes[parentIndex+1]
+  scrollTo(nextFigure, 2000)
+}
+
+function scrollTo(div, duration){
+  setTimeout(div.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" }), duration)
+}
+
+function evaluateScore(rigthAnswers, numberOfQuestions) {
+  return Math.round((rigthAnswers / numberOfQuestions) * 100)
+}
+
+function createCard(title, color, figure, figureCLass='') {
+  const cardTemplate = `
+  <!-- Caixa com o nível do quiz-->
+  <div class="level-box d-flex flex-column space-around align-items-center">
+    <section class="title-box d-flex align-items-center justify-content-center" style="background: ${color};"> 
+      <p class="text-center box-title">${title}</p> 
+    </section>
+    <section class=" figures ${figureCLass} d-flex flex-wrap space-between">
+      ${figure}
+    </section>
+  </div>
+  `
+  return cardTemplate
+}
+
+function checkLevel(score){
+  const levels = currentSession.levels
+  
+   const userLevel = {title: null, image: null, text: null}
+  
+   levels.forEach(level =>{
+    if (score >= level.minValue){
+      userLevel['title'] = level.title
+      userLevel['image'] = level.image
+      userLevel['text'] = level.text
+    }
+   })
+
+
+  return userLevel
+}
+
+function addButtons(){
+  const buttons = `        
+  <div class="buttons d-flex flex-column align-items-center justify-content-center">
+  <button class="btn-phill bg-buzz">Reiniciar quiz</button>
+  <button> Voltar para tela de início </button>
+  </div>`
+
+  quizViewrDiv.innerHTML+= buttons
+}
+
+function lockInteraction(div){
+  div.classList.add('no-interaction')
 }

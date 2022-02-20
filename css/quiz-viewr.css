@@ -69,3 +69,6 @@
     margin-bottom: 110px;
     position: relative;
 }
+.buttons button{
+    border: none;
+}

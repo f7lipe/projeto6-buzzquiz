@@ -38,6 +38,15 @@
     background: none;
     color: var(--buzzColor);
 }
+.btn-phill-fill{
+    width: 151px;
+    height: 40px;
+    border-radius: 50px;
+    background: var(--buzzColor);
+    font-size: 20px;
+    color: white;
+    border-color: transparent;
+}
 .btn-circle{
     width: 31px;
     height: 30px; 

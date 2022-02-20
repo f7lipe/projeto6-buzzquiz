@@ -7,7 +7,7 @@ const currentSession = {
   rigthAnswers: null,
   answeredQuestions: null
 }
-
+const inner = quizViewrDiv
 function loadQuiz(id) {
   const promise = axios.get(API_REPO + 'quizzes/' + id)
   promise.then(quiz => {
@@ -97,9 +97,7 @@ function selectAnswer(answer, selectedFigure, parentIndex) {
   scrollTo(nextFigure, 2000)
 }
 
-function scrollTo(div, duration){
-  setTimeout(div.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" }), duration)
-}
+
 
 function evaluateScore(rigthAnswers, numberOfQuestions) {
   return Math.round((rigthAnswers / numberOfQuestions) * 100)
@@ -140,13 +138,29 @@ function checkLevel(score){
 function addButtons(){
   const buttons = `        
   <div class="buttons d-flex flex-column align-items-center justify-content-center">
-  <button class="btn-phill bg-buzz">Reiniciar quiz</button>
-  <button> Voltar para tela de início </button>
+  <button class="btn-phill-fill" onClick=" resetQuizz()">Reiniciar quiz</button>
+  <button onClick="backHome()"> Voltar para tela de início </button>
   </div>`
 
   quizViewrDiv.innerHTML+= buttons
 }
 
-function lockInteraction(div){
-  div.classList.add('no-interaction')
+function backHome(){
+  location.reload()
+}
+
+function resetQuizz(){
+
+currentSession.rigthAnswers = null
+currentSession.answeredQuestions = null
+
+const level_boxes = document.querySelectorAll('.level-box ')
+level_boxes.forEach(level_box=>{
+  level_box.remove()
+}) 
+
+document.querySelector('.buttons').remove()
+
+loadQuiz(currentSession.id)
+
 }

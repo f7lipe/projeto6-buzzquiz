@@ -41,11 +41,12 @@
 .btn-phill-fill{
     width: 151px;
     height: 40px;
-    border-radius: 50px;
+    border-radius: 15px;
     background: var(--buzzColor);
     font-size: 20px;
     color: white;
     border-color: transparent;
+    margin-bottom: 16px;
 }
 .btn-circle{
     width: 31px;
@@ -55,6 +56,10 @@
     font-size: 20px;
     color: white;
     border-color: transparent;
+}
+
+.btn-unfilled{
+    background: none;
 }
 
 /*Efeitos*/

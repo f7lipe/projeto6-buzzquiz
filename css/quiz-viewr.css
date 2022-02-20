@@ -26,7 +26,6 @@
     height: 436px;
     width: 375px;
     top: calc(200px);
-    gap: 5px;
     margin-bottom: 20px;
 }
 
@@ -39,8 +38,7 @@
 
 .level-box .figures img{
     height: 113px;
-    width: 113px;
-    padding: 5px;
+    width: 163px;
 }
 
 .level-box .figures.figure-answer img{
@@ -51,12 +49,27 @@
 
 .level-box .figures div{
     margin: 10px;
-    width: 130px;
+    width: 163px;
 }
 
-.level-box .figures.figure-answer div{
+.level-box.result-card{
+    height: 500px;
+    width: 375px;    
+}
+
+.level-box.result-card .title-box{
+    height: 99px;
+    width: 340px;    
+}
+
+.level-box.result-card .figures .figure img{
+    height: 255px;
+    width: 340px;    
+}
+
+.level-box.result-card .figures div{
     margin: 10px;
-    width: 100%;
+    width: 340px;
 }
 
 
@@ -72,3 +85,72 @@
 .buttons button{
     border: none;
 }
+
+@media only screen and (min-width: 768px) {
+
+    .figure, button{
+        cursor: pointer;
+    }
+
+    .level-box{
+        width: 759px;
+        height: 676px;
+    }
+
+    .level-box .title-box{
+        width: 688px;
+        height: 137px;
+    }
+
+    .level-box .figures {
+        justify-content: center;
+    }
+
+    .level-box .figures img{
+        height: 175px;
+        width: 329px;
+    }
+    
+    .level-box .figures.figure-answer img{
+        height: 100%;
+        width: 100%;
+    }
+    
+    .level-box .figures div{
+        margin: 10px;
+        width: 329px;
+    }
+    
+
+    .level-box.result-card{
+        height: 430px;
+        width: 759px;    
+    }
+    
+    .level-box.result-card .title-box{
+        height: 99px;
+        width: 727px;    
+    }
+
+    
+    .level-box.result-card .figures .figure img{
+        height: 273px;
+        width: 364px;    
+    }
+    
+    .level-box.result-card .figures{
+        width: 727px;   
+    }
+
+    .level-box.result-card .figures .figure{
+        width: 727px;   
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    .level-box.result-card .figures .figure p{
+        margin: 10px; 
+    }
+
+  }

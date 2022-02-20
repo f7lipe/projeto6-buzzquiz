@@ -13,7 +13,7 @@ const quizViewrDiv = document.querySelector('.quiz-viewr')
 
 function manageView(hidding, showing, id=''){
     const hiddingDiv =  document.getElementsByClassName(hidding)
-    hiddingDiv[0].classList.toggle('hidden')
+    hiddingDiv[0].remove()
     const showingDiv =  document.getElementsByClassName(showing)
     showingDiv[0].classList.toggle('hidden')
     //carrega a segunda tela apenas se id !== ''

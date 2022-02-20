@@ -25,21 +25,25 @@
     <!-- Tela 1 -->
     <section class="home d-flex flex-column justify-content-center">
         <!--Adicionar quiz-->
-        <div class="new-quiz d-flex flex-column align-items-center justify-content-center space-around dashed">
+        <div class="new-quiz d-flex flex-column align-items-center justify-content-center space-around dashed ">
             <p class="text-body text-gray">Você não criou nenhum quiz ainda :(</p>
-            <button class="add-quizz btn-phill dashed-red" onClick="manageView('home', 'creater-home')">
+            <button class="add-quizz btn-phill dashed-red" onClick="leaveHome('.creater-home')">
           Criar Quizz
         </button>
         </div>
         <!-- Lista de quizzes-->
         <section class="quizzes">
             <!--Quizzes do usuário-->
-            <div class="users-quizzes">
+            <div class="users-quizzes-header">
                 <div class="d-flex align-items-center space-between">
                     <p class="text-title">Seus quizes</p>
-                    <button class="add-quizz btn-circle" onClick="manageView('home', 'creater-home')">
+                    <button class="add-quizz btn-circle" onClick="leaveHome('.creater-home')">
               +
             </button>
+
+                    
+                </div>
+                <div class="users-quizzes d-flex flex-wrap space-between">
                     <!-- Será preenchido dinamicamente -->
                 </div>
             </div>

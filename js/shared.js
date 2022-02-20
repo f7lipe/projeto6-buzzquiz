@@ -1,5 +1,5 @@
 const API_REPO = 'https://mock-api.driven.com.br/api/v4/buzzquizz/'
-
+const localStorage = window.localStorage
 
 function comparador(){
     return Math.random() - 0.5
@@ -11,16 +11,7 @@ const userSession = {
 
 const quizViewrDiv = document.querySelector('.quiz-viewr')
 
-function manageView(hidding, showing, id=''){
-    const hiddingDiv =  document.getElementsByClassName(hidding)
-    hiddingDiv[0].remove()
-    const showingDiv =  document.getElementsByClassName(showing)
-    showingDiv[0].classList.toggle('hidden')
-    //carrega a segunda tela apenas se id !== ''
-    if (id !== ''){
-     loadQuiz(id)
-    }
- }
+
 
  function lockInteraction(div){
     div.classList.add('no-interaction')
@@ -33,3 +24,13 @@ function manageView(hidding, showing, id=''){
   function scrollTo(div, duration){
     setTimeout(div.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" }), duration)
   }
+
+  function existsInLocalStorage(key){
+    return localStorage.getItem(key) !== null
+}
+
+function toggleClass(currentElement, toggleElement){
+  const div = document.querySelector(currentElement)
+  div.classList.toggle(toggleElement)
+  console.log(div)
+}

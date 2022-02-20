@@ -382,7 +382,7 @@ function saveQuizzValues() {
       let wrongImage = document.getElementById(
         `creater-input-questions-wimage${i}-${j}`
       ).value;
-      if (wrongAnswer.value != "") {
+      if (wrongAnswer != "") {
         let wrongAns = {
           text: wrongAnswer,
           image: wrongImage,
@@ -548,19 +548,21 @@ function saveQuizzValuesTree() {
 			minValue: levelPercentage
     }
     quizzCreated.levels.push(levels)
-  createrFinalize()
 }
+createrFinalize()
 }
 
 function createrFinalize() {
    const quizzToServer = axios.post(`${API_REPO}quizzes`, quizzCreated);
-   quizzToServer.then(layerFourRenderizer(quizzToServer))
+   quizzToServer.then(layerFourRenderizer)
 }
-function layerFourRenderizer(quizzToServer) {
-  let userId = quizzToServer.id
-  let nameKey = `quizz${userQuizz.length + 1}`
-  let userIdStr = JSON.stringify(userId)
-  localStorage.setItem(nameKey, userIdStr);
+function layerFourRenderizer(quizzServer) {
+  let userQuizzData = quizzServer.data
+  console.log(userQuizzData);
+  // let userId = userQuizzData.id
+  // let nameKey = `quizz${userQuizz.length + 1}`
+  // let userIdStr = JSON.stringify(userId)
+  // localStorage.setItem(nameKey, userIdStr);
   quizzLayerTree.classList.add("hidden");
   quizzLayerFour.classList.remove("hidden");
   quizzLayerFour.innerHTML = `<div class="creater-header creater-header-questions">

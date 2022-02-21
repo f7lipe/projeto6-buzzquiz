@@ -557,12 +557,12 @@ function createrFinalize() {
    quizzToServer.then(layerFourRenderizer)
 }
 function layerFourRenderizer(quizzServer) {
-  let userQuizzData = quizzServer.data
-  console.log(userQuizzData);
-  // let userId = userQuizzData.id
-  // let nameKey = `quizz${userQuizz.length + 1}`
-  // let userIdStr = JSON.stringify(userId)
-  // localStorage.setItem(nameKey, userIdStr);
+  let userQuizzData = quizzServer.data;
+  let userQuizzKey = userQuizzData.key;
+  let userId = userQuizzData.id;
+  let userIdStr = JSON.stringify(userId);
+  let userQuizzKeyStr = JSON.stringify(userQuizzKey);
+  localStorage.setItem(userQuizzKeyStr, userIdStr);
   quizzLayerTree.classList.add("hidden");
   quizzLayerFour.classList.remove("hidden");
   quizzLayerFour.innerHTML = `<div class="creater-header creater-header-questions">
@@ -573,9 +573,9 @@ function layerFourRenderizer(quizzServer) {
     Acessar Quizz
       </button>
       </div>
-      <div class ="four-btn"><button onclick="quizzCreateValidateTree()" class="btn-creater four-home">
+      <div class ="four-btn"><button onclick="window.location.reload()" class="btn-creater four-home">
       Voltar pra home
       </button>
       </div>
-    `
+    `;
 }

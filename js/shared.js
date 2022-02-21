@@ -45,8 +45,13 @@ function reload(){
 }
 
 function showQuizz(id, currentView){
-    
+  
+  if (currentView === '.creater-home'){
+    const viewFour = document.getElementById('creater-screen-four')
+    viewFour.classList.toggle('hidden')
+  } else {
   toggleClass(currentView, 'hidden') // esconde o elemento atual 
+  }
   toggleClass('.quiz-viewr', 'hidden') // mostra a tela do quiz 
   loadQuiz(id)
 }

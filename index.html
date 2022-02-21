@@ -27,17 +27,17 @@
         <!--Adicionar quiz-->
         <div class="new-quiz d-flex flex-column align-items-center justify-content-center space-around dashed ">
             <p class="text-body text-gray">Você não criou nenhum quiz ainda :(</p>
-            <button class="add-quizz btn-phill dashed-red" onClick="showCreaterQuizz('.home')">
+            <button class="add-quizz btn-phill dashed-red" data-identifier="create-quizz" onClick="showCreaterQuizz('.home')">
           Criar Quizz
         </button>
         </div>
         <!-- Lista de quizzes-->
         <section class="quizzes">
             <!--Quizzes do usuário-->
-            <div class="users-quizzes-header hidden">
+            <div class="users-quizzes-header hidden" data-identifier="user-quizzes">
                 <div class="d-flex align-items-center space-between">
                     <p class="text-title">Seus quizes</p>
-                    <button class="add-quizz btn-circle" onClick="showCreaterQuizz('.home')">
+                    <button class="add-quizz btn-circle" data-identifier="create-quizz" onClick="showCreaterQuizz('.home')">
               +
             </button>
 
@@ -49,7 +49,7 @@
             </div>
             <!--Todos os quizzs-->
              <p class="text-title">Todos os quizes</p>
-            <div class="all-quizzes d-flex flex-column space-between">
+            <div class="all-quizzes d-flex flex-column space-between" data-identifier="general-quizzes">
                
                 <!-- Será preenchido dinamicamente -->
             </div>
@@ -71,8 +71,8 @@
         <div class="creater-header">
             <p>Comece pelo começo</p>
         </div>
-        <div id="creater-input-container-one" class="creater-input-container">
-            <div class="form-control"><input id="creater-input-title" placeholder="Título do seu quizz" class="creater-input" type="text" minlength="20" maxlength="65" name="quizz[title]" /><small>O titulo deve conter de 20 a 65 caracteres.</small></div>
+        <div id="creater-input-container-one"  class="creater-input-container">
+            <div class="form-control"><input id="creater-input-title"  placeholder="Título do seu quizz" class="creater-input" type="text" minlength="20" maxlength="65" name="quizz[title]" /><small>O titulo deve conter de 20 a 65 caracteres.</small></div>
             <div class="form-control"><input id="creater-input-image" placeholder="URL da imagem do seu quizz" class="creater-input" type="url" name="quizz[image-url]" /><small>Você deve colocar uma URL válida de imagem.</small></div>
             <div class="form-control"><input id="creater-input-questions-numbers" placeholder="Quantidade de perguntas do quizz" class="creater-input" type="number" name="quizz[questions]" min="3" /><small>Coloque no mínimo 3 perguntas.</small></div>
             <div class="form-control"><input id="creater-input-level-numbers" placeholder="Quantidade de níveis do quizz" class="creater-input" type="number" name="quizz[level-numbers]" min="2" /><small>Coloque no mínimo 2 níveis no seu quizz.</small></div>

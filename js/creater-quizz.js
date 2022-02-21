@@ -95,7 +95,7 @@ function createrLayerTwoRenderizer() {
     </div>`;
   for (i = 1; i <= quizzCreateQuestionsNumb; i++) {
     quizzLayerTwo.innerHTML += `
-<div id="questions-minimized-${i}" onclick="layerQuestionsToggle(${i})" class="questions-minimized">
+<div id="questions-minimized-${i}" data-identifier="expand" data-identifier="expand" onclick="layerQuestionsToggle(${i})" class="questions-minimized">
 <div class="creater-input-container-header">
   <p>Pergunta ${i}</p>
 </div>
@@ -105,8 +105,8 @@ function createrLayerTwoRenderizer() {
 <div class="creater-input-container-header">
   <p>Pergunta ${i}</p>
 </div>
-<div class="form-control"><input
-  id="creater-input-question-text-${i}"
+<div class="form-control"><input data-identifier="question"
+  id="creater-input-question-text-${i}" data-identifier="question"
   placeholder="Texto da pergunta"
   class="creater-input"
   type="text"
@@ -126,7 +126,7 @@ function createrLayerTwoRenderizer() {
   <p>Resposta Correta</p>
 </div>
 <div class="form-control"><input
-  id="creater-input-questions-answer${i}"
+  id="creater-input-questions-answer${i}" data-identifier="level"
   placeholder="Resposta correta"
   class="creater-input true"
   type="text"
@@ -402,7 +402,7 @@ function createrLayerTreeRenderizer() {
     </div>`;
   for (i = 1; i <= quizzCreateLevelNumb; i++) {
     quizzLayerTree.innerHTML += `
-<div id="levels-minimized-${i}" onclick="layerQuestionsToggleTree(${i})" class="levels-minimized">
+<div id="levels-minimized-${i}" data-identifier="expand" onclick="layerQuestionsToggleTree(${i})" class="levels-minimized">
 <div class="creater-input-container-header">
   <p>Nível ${i}</p>
 </div>
@@ -413,7 +413,7 @@ function createrLayerTreeRenderizer() {
   <p>Nível ${i}</p>
 </div>
 <div class="form-control"><input
-  id="creater-input-level-text-${i}"
+  id="creater-input-level-text-${i}" data-identifier="level"
   placeholder="Título do nível"
   class="creater-input"
   type="text"

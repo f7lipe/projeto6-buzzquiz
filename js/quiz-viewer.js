@@ -85,7 +85,7 @@ function selectAnswer(answer, selectedFigure, parentIndex) {
     const userLevel = checkLevel(userScore)
     const title = `${userScore}% de acerto: ${userLevel.title}`
     const answerFigure = `
-    <div class="figure d-flex flex-column">
+    <div class="figure d-flex flex-column" data-identifier="answer">
       <img src="${userLevel.image}" alt="">
       <p class="answer-title">${userLevel.text}</p>
     </div>
@@ -115,7 +115,7 @@ function createCard(title, color, figure, isResultCard) {
   const cardTemplate = `
   <!-- Caixa com o nível do quiz-->
   <div class="level-box d-flex flex-column space-around align-items-center">
-    <section class="title-box d-flex align-items-center justify-content-center" style="background: ${color};"> 
+    <section class="title-box d-flex align-items-center justify-content-center" style="background: ${color};" data-identifier="question"> 
       <p class="text-center box-title">${title}</p> 
     </section>
     <section class=" figures d-flex flex-wrap">
@@ -127,10 +127,10 @@ function createCard(title, color, figure, isResultCard) {
   const resultCardTemplate = `
   <!-- Caixa com o nível do quiz-->
   <div class="level-box result-card d-flex flex-column space-around align-items-center">
-    <section class="title-box d-flex align-items-center justify-content-center" style="background: red;"> 
+    <section class="title-box d-flex align-items-center justify-content-center" style="background: red;" > 
       <p class="text-center box-title">${title}</p> 
     </section>
-    <section class=" figures d-flex flex-wrap justify-content-center">
+    <section class=" figures d-flex flex-wrap justify-content-center" data-identifier="quizz-result">
       ${figure}
     </section>
   </div>

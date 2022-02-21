@@ -16,7 +16,7 @@ function comparador(){
 function createQuizCard(title, imageUrl, id, isQuiz_creater = false){
   const class_ = isQuiz_creater ? 'quiz-creater' : ''
   const template = `
-  <article class="quiz-card ${class_} shadow-overlay" onClick="showQuizz(${id}, '.home')"  > 
+  <article class="quiz-card ${class_} shadow-overlay" onClick="showQuizz(${id}, '.home')" data-identifier="quizz-card" > 
  <img src=${imageUrl}>
  <p class="text-body">${title}</p>
  </article>

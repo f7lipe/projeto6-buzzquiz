@@ -112,7 +112,7 @@ function createrLayerTwoRenderizer() {
   type="text"
   minlength="20"
   name="quizz[title-question]"
-/><small>Mensagem de erro</small></div>
+/><small>Texto da pergunta: no mínimo 20 caracteres</small></div>
 <div class="form-control"><input
   id="creater-input-question-color-${i}"
   placeholder="Cor de fundo da pergunta"
@@ -121,7 +121,7 @@ function createrLayerTwoRenderizer() {
   name="quizz[color]"
   minlength="7"
   maxlength="7"
-/><small>Mensagem de erro</small></div>
+/><small>Cor de fundo: deve ser uma cor em hexadecimal </small></div>
 <div class="creater-input-container-header">
   <p>Resposta Correta</p>
 </div>
@@ -131,14 +131,14 @@ function createrLayerTwoRenderizer() {
   class="creater-input true"
   type="text"
   name="quizz[questions]"
-/><small>Mensagem de erro</small></div>
+/><small>Textos das respostas: não pode estar vazio</small></div>
 <div class="form-control"><input
   id="creater-input-questions-image${i}"
   placeholder="URL da imagem"
   class="creater-input true-image"
   type="url"
   name="quizz[image-URL]"
-/><small>Mensagem de erro</small></div>
+/><small>URL das imagens de resposta: deve ter formato de URL</small></div>
 <div class="creater-input-container-header">
   <p>Respostas Incorretas</p>
 </div>
@@ -148,14 +148,14 @@ function createrLayerTwoRenderizer() {
   class="creater-input wrong-answer"
   type="text"
   name="quizz[questions-wanswer]"
-/><small>Mensagem de erro</small></div>
+/><small>É obrigatória a inserção da resposta correta e de pelo menos 1 resposta errada.</small></div>
 <div class="form-control"><input
   id="creater-input-questions-wimage${i}-1"
   placeholder="URL da imagem 1"
   class="creater-input "
   type="url"
   name="quizz[image-URL]"
-/><small>Mensagem de erro</small></div>
+/><small>URL das imagens de resposta: deve ter formato de URL</small></div>
 <div class="form-control"><input
   id="creater-input-questions-wanswer${i}-2"
   placeholder="Resposta incorreta 2"
@@ -169,7 +169,7 @@ function createrLayerTwoRenderizer() {
   class="creater-input"
   type="url"
   name="quizz[image-URL]"
-/><small>Mensagem de erro</small></div>
+/><small>URL das imagens de resposta: deve ter formato de URL</small></div>
 <div class="form-control"><input
   id="creater-input-questions-wanswer${i}-3"
   placeholder="Resposta incorreta 3"
@@ -183,7 +183,7 @@ function createrLayerTwoRenderizer() {
   class="creater-input"
   type="url"
   name="quizz[image-URL]"
-/><small>Mensagem de erro</small></div>
+/><small>URL das imagens de resposta: deve ter formato de URL</small></div>
 </div>
 `;
   }
@@ -419,7 +419,7 @@ function createrLayerTreeRenderizer() {
   type="text"
   minlength="10"
   name="quizz[title-question]"
-/><small>Mensagem de erro</small></div>
+/><small>Título do nível: mínimo de 10 caracteres</small></div>
 <div class="form-control"><input
   id="creater-input-level-percentage-${i}"
   placeholder="% de acerto mínima"
@@ -427,16 +427,16 @@ function createrLayerTreeRenderizer() {
   type="number"
   name="quizz[percentage]"
   max="100" maxlength="3"
-/><small>Mensagem de erro</small></div>
+/><small>Número entre 0 e 100. Ao menos 1 nível deve ser 0</small></div>
 <div class="form-control"><input
   id="creater-input-level-image${i}"
   placeholder="URL da imagem do nível"
   class="creater-input"
   type="url"
   name="quizz[lvlImage]"
-/><small>Mensagem de erro</small></div>
+/><small>URL da imagem do nível: deve ter formato de URL</small></div>
 <div class="form-control"><textarea id="creater-input-level-descrition${i}" class="creater-input description" rows="5" 
-placeholder="Descrição do nível" minlength="30"></textarea><small>Mensagem de erro</small></div>
+placeholder="Descrição do nível" minlength="30"></textarea><small>Descrição do nível: mínimo de 30 caracteres</small></div>
 </div>
 `;
   }
@@ -513,7 +513,7 @@ function quizzCreateValidateTree() {
       levelImage.parentNode.querySelector('small').classList.add('visible');
       contador++
     }
-    if (levelDesc.value===""||levelDesc.classList.contains(':invalid')){
+    if (levelDesc.value===""||levelDesc.value.length < 30){
       levelDesc.classList.add('invalid');
       levelDesc.parentNode.querySelector('small').classList.add('visible');
       contador++

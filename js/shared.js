@@ -5,9 +5,6 @@ function comparador(){
     return Math.random() - 0.5
 }
 
-const userSession = {
-    userQuizzes : ''
-}
 
 const quizViewrDiv = document.querySelector('.quiz-viewr')
 
@@ -30,6 +27,7 @@ const quizViewrDiv = document.querySelector('.quiz-viewr')
 }
 
 function toggleClass(currentElement, toggleElement){
+  console.log(toggleElement)
   const div = document.querySelector(currentElement)
   div.classList.toggle(toggleElement)
 }

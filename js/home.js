@@ -9,13 +9,15 @@ function loadQuizzes(){
 function renderQuizzes(quizzes){
 
     let quizType = null
+    let count = null
     quizzes.data.forEach(quiz => {
         const id = quiz.id
 		const title = quiz.title
 		const imageUrl = quiz.image
-        
+
         if(existsInLocalStorage(id)){
             quizType = '.users-quizzes'
+            count++
         } else {
             quizType = '.all-quizzes'
         }
@@ -26,17 +28,30 @@ function renderQuizzes(quizzes){
         quizzesDiv.innerHTML += quizCardTemplate
     });
 
-
+       if (count >0){
+        toggleClass('.new-quiz', 'hidden')
+        toggleClass('.users-quizzes-header', 'hidden')
+       } 
 }
 
 function leaveHome(showing){
+
     const hiddingDiv =  document.querySelector('.home')
-    hiddingDiv.remove()
-    const showingDiv =  document.querySelector(showing)
-    showingDiv.classList.toggle('hidden')
+    if (hiddingDiv.classList.contains('hidden')){
+        const showingDiv =  document.querySelector(showing)
+        showingDiv.classList.toggle('hidden')
+
+    } else {
+        const showingDiv =  document.querySelector(showing)
+        showingDiv.classList.toggle('hidden')
+        hiddingDiv.classList.toggle('hidden')
+        
+    }
+
  }
 
  function showQuizz(id){
+    
     leaveHome('.quiz-viewr')
     loadQuiz(id)
  }

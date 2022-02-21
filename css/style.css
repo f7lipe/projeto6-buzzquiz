@@ -13,6 +13,10 @@
     --buzzgray: #B9B9B9;
 }
 
+.d-flex.hidden{
+    display: none;
+}
+
 /*Esconder*/
 .hidden {
     display: none;

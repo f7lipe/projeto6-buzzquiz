@@ -83,7 +83,7 @@ function selectAnswer(answer, selectedFigure, parentIndex) {
     const numberOfQuestions = currentSession.questions.length
     const userScore = evaluateScore(rigthAnswers, numberOfQuestions)
     const userLevel = checkLevel(userScore)
-    const title = `${userScore}% de acerto: ${userLevel.text}`
+    const title = `${userScore}% de acerto: ${userLevel.title}`
     const answerFigure = `
     <div class="figure d-flex flex-column">
       <img src="${userLevel.image}" alt="">

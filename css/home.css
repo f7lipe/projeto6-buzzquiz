@@ -34,6 +34,11 @@ body {
     margin-bottom: 14px;
 }
 
+.quiz-card.quiz-creater{
+    width: 300px;
+}
+
+
 .quiz-card img{
     width: 100%;
     height: 181px;

@@ -580,6 +580,7 @@ function layerFourRenderizer(quizzServer) {
       </button>
       </div>
     `;
+  window.scrollTo(0, 0);
 }
 function createdQuizzRenderize (id) {
   quizzLayerFour.classList.add("hidden");

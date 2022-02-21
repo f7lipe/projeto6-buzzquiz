@@ -196,26 +196,6 @@ input:focus {
 .form-control small.visible {
   visibility: visible;
 }
-.img-container {
-    width: 340px;
-  height: 181px;
-}
-.div-image {
-  width: 340px;
-  height: 181px;
-  object-fit: cover;
-}
-.img-container p {
-  position: relative;
-  text-align: center;
-  top: -50px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 19px;
-  line-height: 22px;
-  color:#ffffff;
-}
 .btn-creater.four {
   margin: 0;
   width: 220.32px;

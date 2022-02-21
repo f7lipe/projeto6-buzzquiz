@@ -557,25 +557,31 @@ function createrFinalize() {
    quizzToServer.then(layerFourRenderizer)
 }
 function layerFourRenderizer(quizzServer) {
-  let userQuizzData = quizzServer.data
-  console.log(userQuizzData);
-  // let userId = userQuizzData.id
-  // let nameKey = `quizz${userQuizz.length + 1}`
-  // let userIdStr = JSON.stringify(userId)
-  // localStorage.setItem(nameKey, userIdStr);
+  let userQuizzData = quizzServer.data;
+  let userQuizzKey = userQuizzData.key;
+  let userId = userQuizzData.id;
+  let userIdStr = JSON.stringify(userId);
+  let userQuizzKeyStr = JSON.stringify(userQuizzKey);
+  localStorage.setItem(userIdStr, userQuizzKeyStr);
   quizzLayerTree.classList.add("hidden");
   quizzLayerFour.classList.remove("hidden");
   quizzLayerFour.innerHTML = `<div class="creater-header creater-header-questions">
     <p>Seu quizz está pronto!</p>
     </div>
-    <div class="div-image"></div>
-    <div class ="second-btn"><button onclick="quizzCreateValidateTree()" class="btn-creater four">
+    <div onlick="createdQuizzRenderize()" class="div-image">
+    <img src=${userQuizzData.image}>
+    </div>
+    <div class ="second-btn"><button onclick="createdQuizzRenderize(${userId})" class="btn-creater four">
     Acessar Quizz
       </button>
       </div>
-      <div class ="four-btn"><button onclick="quizzCreateValidateTree()" class="btn-creater four-home">
+      <div class ="four-btn"><button onclick="window.location.reload()" class="btn-creater four-home">
       Voltar pra home
       </button>
       </div>
-    `
+    `;
+}
+function createdQuizzRenderize (id) {
+  quizzLayerFour.classList.add("hidden");
+  showQuizz(id)
 }

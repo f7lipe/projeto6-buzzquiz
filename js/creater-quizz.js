@@ -562,14 +562,16 @@ function layerFourRenderizer(quizzServer) {
   let userId = userQuizzData.id;
   let userIdStr = JSON.stringify(userId);
   let userQuizzKeyStr = JSON.stringify(userQuizzKey);
-  localStorage.setItem(userQuizzKeyStr, userIdStr);
+  localStorage.setItem(userIdStr, userQuizzKeyStr);
   quizzLayerTree.classList.add("hidden");
   quizzLayerFour.classList.remove("hidden");
   quizzLayerFour.innerHTML = `<div class="creater-header creater-header-questions">
     <p>Seu quizz está pronto!</p>
     </div>
-    <div class="div-image"></div>
-    <div class ="second-btn"><button onclick="quizzCreateValidateTree()" class="btn-creater four">
+    <div onlick="createdQuizzRenderize()" class="div-image">
+    <img href="${userQuizzData.image}">
+    </div>
+    <div class ="second-btn"><button onclick="createdQuizzRenderize(${userId})" class="btn-creater four">
     Acessar Quizz
       </button>
       </div>
@@ -578,4 +580,8 @@ function layerFourRenderizer(quizzServer) {
       </button>
       </div>
     `;
+}
+function createdQuizzRenderize (id) {
+  quizzLayerFour.classList.add("hidden");
+  showQuizz(id)
 }

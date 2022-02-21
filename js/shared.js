@@ -32,5 +32,4 @@ const quizViewrDiv = document.querySelector('.quiz-viewr')
 function toggleClass(currentElement, toggleElement){
   const div = document.querySelector(currentElement)
   div.classList.toggle(toggleElement)
-  console.log(div)
 }

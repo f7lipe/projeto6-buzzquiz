@@ -568,9 +568,7 @@ function layerFourRenderizer(quizzServer) {
   quizzLayerFour.innerHTML = `<div class="creater-header creater-header-questions">
     <p>Seu quizz está pronto!</p>
     </div>
-    <div onlick="createdQuizzRenderize()" class="div-image">
-    <img href="${userQuizzData.image}">
-    </div>
+    <div class="img-container"><img onlick="createdQuizzRenderize()" class="div-image" src="${userQuizzData.image}"><p>${userQuizzData.title}</p></div>
     <div class ="second-btn"><button onclick="createdQuizzRenderize(${userId})" class="btn-creater four">
     Acessar Quizz
       </button>

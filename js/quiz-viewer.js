@@ -5,9 +5,10 @@ const currentSession = {
   questions: null, 
   levels: null, 
   rigthAnswers: null,
-  answeredQuestions: null
+  answeredQuestions: null,
+  initalState: queryDivByClassName('.quiz-viewr')
 }
-const inner = quizViewrDiv
+
 function loadQuiz(id) {
   const promise = axios.get(API_REPO + 'quizzes/' + id)
   promise.then(quiz => {
@@ -24,20 +25,23 @@ function loadQuiz(id) {
 }
 
 function renderQuiz(title, image, questions) {
-  scrollTo(quizViewrDiv, 0)
+  const quizViewerDiv = currentSession.initalState
+  scrollToView(quizViewerDiv, 0)
   const header = 
   `
   <img class="overlay" src="${image}" alt="">
   <p class="text-body">${title}</p>
   `
-  const quizHeader = quizViewrDiv.querySelector('.header-figure')
+  const quizHeader = quizViewerDiv.querySelector('.header-figure')
   quizHeader.innerHTML = header
   let i = 0;
   questions.forEach(question => {
     const questionTitle = question.title
     const questionColor = question.color
     const questionAnswers = question.answers
+
     const shuffledAnswers = questionAnswers.sort(comparador)
+
     let figures = ''
     shuffledAnswers.forEach(answer => {
       const answerText = answer.text
@@ -51,29 +55,29 @@ function renderQuiz(title, image, questions) {
       figures += answerFigure
     })
     i++
-    quizViewrDiv.innerHTML += createCard(questionTitle, questionColor, figures, false)
+    quizViewerDiv.innerHTML += createCard(questionTitle, questionColor, figures, false)
   });
 }
 
 function selectAnswer(answer, selectedFigure, parentIndex) {
-  console.log(currentSession)
-  let boxes = document.querySelectorAll('.level-box ')
-  const currentBox = boxes[parentIndex]
-  const figures = currentBox.querySelectorAll('.figure')
+  updateAsnweredQuestions(answer)
 
-  currentSession['answeredQuestions'] += 1
-  if (answer) { currentSession['rigthAnswers'] += 1 }
+  const quizViewerDiv = currentSession.initalState
+  let cards = queryAll('.level-box ')
+  const currentCard = cards[parentIndex]
+  const cardFigures = currentCard.querySelectorAll('.figure')
 
-  figures.forEach(figure => {
+ 
+
+  cardFigures.forEach(figure => {
     lockInteraction(figure)
-    if (figure !== selectedFigure) {
-      figure.classList.toggle('opacity')
-    }
     const figureText = figure.querySelector('p').classList
-    figure.id === "true" ? figureText.add('text-green') : figureText.add('text-red')
+    if (!areEquals(figure,selectedFigure)) {addOpacity(figure)}
+    areEquals(figure.id, "true") ? figureText.add('text-green') : figureText.add('text-red')
   })
 
-  if(currentSession.answeredQuestions === currentSession.questions.length){
+  if(areEquals(currentSession.answeredQuestions, currentSession.questions.length)){
+    
 
     const rigthAnswers = currentSession.rigthAnswers
     const numberOfQuestions = currentSession.questions.length
@@ -86,22 +90,26 @@ function selectAnswer(answer, selectedFigure, parentIndex) {
       <p class="answer-title">${userLevel.text}</p>
     </div>
     `
-    const card = createCard(title, 'red', answerFigure, true)
-    quizViewrDiv.innerHTML += card
-    addButtons()
-    boxes = document.querySelectorAll('.level-box ')
-    
+    const card = createCard(title, 'red', answerFigure, isResultCard = true)
+    quizViewerDiv.innerHTML += card
+    addButtons(quizViewerDiv)
+    cards = queryAll('.level-box ')
   } 
 
-  const nextFigure = boxes[parentIndex+1]
-  scrollTo(nextFigure, 2000)
+  const nextFigure = cards[parentIndex+1]
+  scrollToView(nextFigure, 2000)
 }
 
+function updateAsnweredQuestions(answer){
+  currentSession['answeredQuestions'] += 1
+  if (answer) { currentSession['rigthAnswers'] += 1 }
+}
 
 
 function evaluateScore(rigthAnswers, numberOfQuestions) {
   return Math.round((rigthAnswers / numberOfQuestions) * 100)
 }
+
 
 function createCard(title, color, figure, isResultCard) {
   const cardTemplate = `
@@ -152,31 +160,28 @@ function checkLevel(score){
   return userLevel
 }
 
-function addButtons(){
+function addButtons(location){
   const buttons = `        
   <div class="buttons d-flex flex-column align-items-center justify-content-center">
   <button class="btn-phill-fill" onClick=" resetQuizz()">Reiniciar quiz</button>
-  <button class="btn-unfilled text-gray" onClick="backHome()"> Voltar para tela de início </button>
+  <button class="btn-unfilled text-gray" onClick="reload()"> Voltar para tela de início </button>
   </div>`
 
-  quizViewrDiv.innerHTML+= buttons
+  location.innerHTML+= buttons
 }
 
-function backHome(){
-  location.reload()
-}
 
 function resetQuizz(){
 
 currentSession.rigthAnswers = null
 currentSession.answeredQuestions = null
 
-const level_boxes = document.querySelectorAll('.level-box ')
+const level_boxes = queryAll('.level-box ')
 level_boxes.forEach(level_box=>{
   level_box.remove()
 }) 
 
-document.querySelector('.buttons').remove()
+queryDivByClassName('.buttons').remove()
 
 loadQuiz(currentSession.id)
 
